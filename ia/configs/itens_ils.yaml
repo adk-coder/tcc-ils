@@ -1,0 +1,72 @@
+# Parâmetros empíricos dos 44 itens do ILS, usados para calibrar o gerador 2PL.
+#
+# r : correlação item-total CORRIGIDA de cada item (coluna "Corrected
+#     Item-Total Correlation" da Tabela 3 de Litzinger et al., 2005).
+#     Amostra: 572 respondentes da Penn State, cerca de 80% graduandos.
+# p : proporção de respondentes que marcam "a". O artigo NÃO publica esse
+#     valor por item; usamos 0,50 (população equilibrada entre os polos) e
+#     isso é declarado como limitação no texto.
+#
+# Observação: o item 40 tem r = −0,0105 (praticamente zero). O gerador o
+# modela com r_minimo (ver configs/gerador.yaml): um item quase aleatório.
+
+status: PUBLICADO          # PLACEHOLDER | PUBLICADO
+
+fonte: >
+  LITZINGER, T. A.; LEE, S. H.; WISE, J. C.; FELDER, R. M. A study of the
+  reliability and validity of the Felder-Soloman Index of Learning Styles.
+  In: ASEE Annual Conference & Exposition, 2005. Proceedings... p. 10.95.1-10.95.13.
+  Tabela 3 (Output of Classical Item Analysis).
+
+# A Tabela 3 reporta correlação CORRIGIDA (item × soma dos outros 10 itens).
+tipo_correlacao: item_resto
+
+itens:
+  # dimensão ativo/reflexivo: itens 1, 5, 9, ..., 41
+  # dimensão sensorial/intuitivo: itens 2, 6, 10, ..., 42
+  # dimensão visual/verbal: itens 3, 7, 11, ..., 43
+  # dimensão sequencial/global: itens 4, 8, 12, ..., 44
+  1: {r: 0.3223, p: 0.50}
+  2: {r: 0.4357, p: 0.50}
+  3: {r: 0.3298, p: 0.50}
+  4: {r: 0.2503, p: 0.50}
+  5: {r: 0.3709, p: 0.50}
+  6: {r: 0.5115, p: 0.50}
+  7: {r: 0.5921, p: 0.50}
+  8: {r: 0.3158, p: 0.50}
+  9: {r: 0.1692, p: 0.50}
+  10: {r: 0.4177, p: 0.50}
+  11: {r: 0.5313, p: 0.50}
+  12: {r: 0.2082, p: 0.50}
+  13: {r: 0.2548, p: 0.50}
+  14: {r: 0.4349, p: 0.50}
+  15: {r: 0.3972, p: 0.50}
+  16: {r: 0.1684, p: 0.50}
+  17: {r: 0.0602, p: 0.50}
+  18: {r: 0.5759, p: 0.50}
+  19: {r: 0.3605, p: 0.50}
+  20: {r: 0.3877, p: 0.50}
+  21: {r: 0.3245, p: 0.50}
+  22: {r: 0.417, p: 0.50}
+  23: {r: 0.3454, p: 0.50}
+  24: {r: 0.2071, p: 0.50}
+  25: {r: 0.3716, p: 0.50}
+  26: {r: 0.2975, p: 0.50}
+  27: {r: 0.4691, p: 0.50}
+  28: {r: 0.3119, p: 0.50}
+  29: {r: 0.2462, p: 0.50}
+  30: {r: 0.3361, p: 0.50}
+  31: {r: 0.549, p: 0.50}
+  32: {r: 0.1041, p: 0.50}
+  33: {r: 0.2311, p: 0.50}
+  34: {r: 0.3761, p: 0.50}
+  35: {r: 0.3391, p: 0.50}
+  36: {r: 0.3818, p: 0.50}
+  37: {r: 0.3223, p: 0.50}
+  38: {r: 0.6306, p: 0.50}
+  39: {r: 0.1694, p: 0.50}
+  40: {r: -0.0105, p: 0.50}
+  41: {r: 0.2596, p: 0.50}
+  42: {r: 0.164, p: 0.50}
+  43: {r: 0.1731, p: 0.50}
+  44: {r: 0.2952, p: 0.50}

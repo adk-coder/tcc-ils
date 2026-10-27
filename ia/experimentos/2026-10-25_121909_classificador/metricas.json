@@ -1,0 +1,69 @@
+{
+  "duracao_segundos": 381.3,
+  "tempo_treino_s": 58.8,
+  "epocas": 54,
+  "mascaras_aleatorias": {
+    "mlp": {
+      "ati_ref": {
+        "acuracia": 0.8128,
+        "log_loss": 0.3614,
+        "ece": 0.0117
+      },
+      "sen_int": {
+        "acuracia": 0.8558,
+        "log_loss": 0.2967,
+        "ece": 0.0112
+      },
+      "vis_ver": {
+        "acuracia": 0.8396,
+        "log_loss": 0.317,
+        "ece": 0.0079
+      },
+      "seq_glo": {
+        "acuracia": 0.8148,
+        "log_loss": 0.3639,
+        "ece": 0.0094
+      }
+    },
+    "tri": {
+      "ati_ref": {
+        "acuracia": 0.8149,
+        "log_loss": 0.3545,
+        "ece": 0.0072
+      },
+      "sen_int": {
+        "acuracia": 0.8445,
+        "log_loss": 0.3013,
+        "ece": 0.0062
+      },
+      "vis_ver": {
+        "acuracia": 0.8403,
+        "log_loss": 0.3115,
+        "ece": 0.0072
+      },
+      "seq_glo": {
+        "acuracia": 0.8017,
+        "log_loss": 0.3744,
+        "ece": 0.0082
+      }
+    }
+  },
+  "ganho_outras_dimensoes": {
+    "ati_ref": {
+      "k=0": -0.0022,
+      "k=3": -0.0024
+    },
+    "sen_int": {
+      "k=0": 0.1573,
+      "k=3": 0.0031
+    },
+    "vis_ver": {
+      "k=0": 0.0098,
+      "k=3": 0.0015
+    },
+    "seq_glo": {
+      "k=0": 0.1588,
+      "k=3": 0.0113
+    }
+  }
+}

@@ -1,0 +1,51 @@
+# Abordagem 3, peça (b) — política de seleção com MaskablePPO (etapa 4b).
+
+nome_experimento: rl
+seed: 20261019
+diretorio_dados: dados/sintetico
+
+# Classificador da etapa 4a: "auto" = o mais recente em experimentos/*_classificador/
+classificador: auto
+
+# Custo de cada pergunta, em "acertos de dimensão". Um modelo é treinado por λ.
+# λ maior → política mais econômica (menos perguntas, menos acerto).
+# 1ª execução (recompensa "acerto", λ 0,01/0,02/0,03/0,05): ver D17. Grade agora
+# mais fina na região em que o TAC e a política gulosa atingem a meta.
+lambdas: [0.01, 0.015, 0.02, 0.025, 0.03, 0.04]
+
+# acerto: +1 por dimensão correta só ao encerrar (1ª execução; aprendeu mal)
+# probabilidade: idem, com a probabilidade do polo correto no lugar de 0/1
+# potencial: sinal a cada pergunta (variação de Φ) − λ; mesmo objetivo (D17)
+recompensa: potencial
+
+treino:
+  passos: 1500000           # passos de ambiente (perguntas + encerramentos) por λ
+  avaliar_a_cada: 250000    # mede a política em parte da validação durante o treino
+  n_avaliacao_parcial: 3000 # alunos da validação usados nessas medições intermediárias
+  n_envs: 8                 # cópias do ambiente em paralelo (no mesmo processo)
+
+ppo:
+  learning_rate: 0.0003
+  n_steps: 1024             # passos por ambiente antes de cada atualização (8 × 1024 = 8192)
+  batch_size: 512
+  n_epochs: 10
+  gamma: 1.0                # sem desconto: o retorno é exatamente acertos − λ·perguntas
+  gae_lambda: 0.95
+  clip_range: 0.2
+  ent_coef: 0.005           # incentivo à exploração (era 0,01 na 1ª execução)
+  rede: [256, 256]          # política e crítico: duas camadas de 256
+
+# Linha de base sem RL (politica_gulosa.py): limiares de confiança testados
+gulosa:
+  limiares: [0.80, 0.82, 0.84, 0.86, 0.88, 0.90, 0.92, 0.94, 0.96]
+
+# Escolha do λ (só validação): o de MENOR nº médio de questões entre os que
+# têm todas as dimensões com acurácia >= meta. O teste avalia só o escolhido.
+meta_acuracia: 0.90
+
+# Modo rápido (python scripts/treinar_rl.py --rapido): só para conferir se tudo
+# funciona. Usa o primeiro λ, poucos passos, parte da validação e NÃO usa o teste.
+rapido:
+  passos: 60000
+  avaliar_a_cada: 20000
+  n_validacao: 2000

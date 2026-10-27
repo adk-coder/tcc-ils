@@ -1,0 +1,17 @@
+# Abordagem 3, peça (a) — classificador MLP de respostas parciais (etapa 4a).
+
+nome_experimento: classificador
+seed: 20261019
+diretorio_dados: dados/sintetico
+
+rede:
+  camadas: [256, 256]       # duas camadas ocultas com 256 neurônios (ReLU)
+  dropout: 0.0
+  lr: 0.001                 # taxa de aprendizado do Adam
+  weight_decay: 0.0
+  lote: 512
+  max_epocas: 60
+  paciencia: 6              # parada antecipada
+
+# A avaliação desta etapa usa só a VALIDAÇÃO. O TESTE fica reservado para a
+# avaliação final do questionário com RL (sistema completo).

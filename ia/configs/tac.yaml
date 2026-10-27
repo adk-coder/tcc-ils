@@ -1,0 +1,28 @@
+# Abordagem 2 — TAC clássico com TRI (etapa 3).
+
+nome_experimento: tac
+seed: 20261019              # o TAC é determinístico; a seed fica registrada por padrão
+diretorio_dados: dados/sintetico
+
+grade_theta:
+  pontos: 61                # grade de θ para o posterior (−4 a +4)
+  maximo: 4.0
+
+# Alvo da probabilidade usada na parada (ver tac.py):
+#   escore: P(polo do ILS completo)  ← recomendado, é o alvo do trabalho
+#   theta:  P(θ > 0)                 ← critério "de livro", fica para comparação
+alvos: [escore, theta]
+
+# Regra definida no projeto do TCC: parar quando P(polo) >= 95%
+limiar_projeto: 0.95
+
+# Limiares varridos na VALIDAÇÃO para a curva acurácia × nº de questões.
+limiares: [0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.82, 0.84, 0.86, 0.88, 0.90,
+           0.92, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99]
+
+# Escolha pela validação (como na árvore): por dimensão, o MENOR limiar cuja
+# acurácia do polo na validação seja >= meta_acuracia.
+meta_acuracia: 0.90
+
+# Desenha a curva da árvore (último experimento de árvore) no mesmo gráfico.
+comparar_com_arvore: true

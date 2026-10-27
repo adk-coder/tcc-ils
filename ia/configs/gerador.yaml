@@ -1,0 +1,44 @@
+# Configuração da geração da base sintética (etapa 1).
+# Tudo que influencia o resultado está aqui, e esta config é copiada para o
+# diretório do experimento a cada execução.
+
+nome_experimento: base_sintetica
+
+seed: 20261019              # semente única; todas as outras são derivadas dela
+
+n_respondentes: 100000
+
+divisao:                    # proporções treino / validação / teste
+  treino: 0.70
+  validacao: 0.15
+  teste: 0.15
+
+arquivo_itens: configs/itens_ils.yaml
+diretorio_saida: dados/sintetico
+formato: parquet            # parquet | csv
+
+# Traço latente θ ~ Normal multivariada com média 0 e variância 1 em cada
+# dimensão. A correlação entre os θ é CALIBRADA para que a correlação entre
+# os ESCORES gerados bata com a publicada. Pares não listados ficam com ρ = 0.
+#
+# Felder e Spurlin (2005, tabela de correlações entre escalas) relatam
+# sensorial/intuitivo × sequencial/global = 0,48; 0,41; 0,32; 0,55 em quatro
+# amostras; média = 0,44. Os demais pares são pequenos e sem padrão
+# consistente (|r| ≤ 0,2), por isso ficam em zero.
+correlacoes_escores_alvo:
+  sen_int-seq_glo: 0.44
+
+# Alfas de Cronbach de Litzinger et al. (2005), N = 572, usados apenas para
+# COMPARAR com a base gerada (validação externa da calibração).
+alfa_referencia:
+  ati_ref: 0.60
+  sen_int: 0.77
+  vis_ver: 0.74
+  seq_glo: 0.56
+
+calibracao:
+  n_amostra: 50000          # respondentes usados só para calibrar a_i e b_i
+  max_iteracoes: 30
+  tolerancia: 0.002         # para quando |r_simulado − r_alvo| < tolerância em todos os itens
+  a_maximo: 4.0             # teto de segurança para a discriminação
+  r_minimo: 0.02            # piso para itens com correlação publicada ~0 ou negativa (item 40)

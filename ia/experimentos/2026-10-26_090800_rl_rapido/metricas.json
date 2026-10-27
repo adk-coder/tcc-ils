@@ -1,0 +1,39 @@
+{
+  "duracao_segundos": 39.0,
+  "lambda_escolhido": 0.01,
+  "meta_atingida_na_validacao": false,
+  "classificador": "experimentos\\2026-10-25_121909_classificador\\classificador.pt",
+  "validacao": {
+    "0.01": {
+      "por_dimensao": {
+        "ati_ref": {
+          "acuracia_polo": 0.887,
+          "kappa_polo": 0.774,
+          "media_questoes": 7.503
+        },
+        "sen_int": {
+          "acuracia_polo": 0.922,
+          "kappa_polo": 0.844,
+          "media_questoes": 8.175
+        },
+        "vis_ver": {
+          "acuracia_polo": 0.9165,
+          "kappa_polo": 0.8331,
+          "media_questoes": 7.758
+        },
+        "seq_glo": {
+          "acuracia_polo": 0.892,
+          "kappa_polo": 0.7839,
+          "media_questoes": 8.082
+        }
+      },
+      "geral": {
+        "acuracia_polo_media": 0.9044,
+        "acuracia_polo_minima": 0.887,
+        "todas_dimensoes_ge_90": false,
+        "media_questoes_total": 31.517,
+        "desvio_questoes_total": 5.825
+      }
+    }
+  }
+}

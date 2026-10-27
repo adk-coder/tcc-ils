@@ -1,0 +1,20 @@
+{
+  "inicio": "2026-10-22T09:37:19",
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "sistema": "Windows-10-10.0.26200-SP0",
+  "processador": "AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD",
+  "commit_git": null,
+  "pacotes": {
+    "numpy": "2.4.6",
+    "pandas": "3.1.0",
+    "scipy": "1.17.1",
+    "pyarrow": "26.0.0",
+    "scikit-learn": "1.9.1",
+    "girth": "0.8.0",
+    "catsim": "0.21.0",
+    "torch": "2.14.1+cpu",
+    "gymnasium": "1.4.0",
+    "stable-baselines3": "2.9.0",
+    "sb3-contrib": "2.9.0"
+  }
+}

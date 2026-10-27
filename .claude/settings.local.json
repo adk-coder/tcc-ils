@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\augus\\\\OneDrive\\\\Desktop\\\\tcc-ils\" -Recurse -Depth 4 | Select-Object -Property @{Name=\"Path\";Expression={$_.FullName}}, @{Name=\"Type\";Expression={if\\($_.PSIsContainer\\){\"DIR\"}else{\"FILE\"}}}, @{Name=\"Size\";Expression={if\\($_.PSIsContainer\\){\"-\"}else{$_.Length}}} | Format-Table -AutoSize)"
+    ]
+  }
+}

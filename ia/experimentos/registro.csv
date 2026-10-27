@@ -1,0 +1,8 @@
+data,nome,diretorio,seed,duracao_s,resumo
+2026-10-22T09:37:35,base_sintetica,2026-10-22_093735_base_sintetica,20261019,3.7,"{""status_itens"": ""PUBLICADO"", ""alfas"": {""ati_ref"": 0.608, ""sen_int"": 0.7675, ""vis_ver"": 0.7402, ""seq_glo"": 0.5612}, ""n"": 100000}"
+2026-10-25T08:59:18,arvore,2026-10-25_085918_arvore,20261019,31.8,"{""parada_garantida_questoes_teste"": 32.676, ""dimensao"": {""acc_min_teste"": 0.8979, ""questoes_teste"": 28.697}, ""todos"": {""acc_min_teste"": 0.8979, ""questoes_teste"": 28.697}}"
+2026-10-25T09:22:49,tac,2026-10-25_092249_tac,20261019,189.0,"{""parada_garantida_questoes_teste"": 32.676, ""escore_limiar_escolhido"": {""acc_min"": 0.9013, ""questoes"": 14.81}, ""escore_limiar_projeto"": {""acc_min"": 0.9751, ""questoes"": 24.173}, ""theta_limiar_escolhido"": {""acc_min"": 0.9054, ""questoes"": 19.968}, ""theta_limiar_projeto"": {""acc_min"": 0.9072, ""questoes"": 30.974}}"
+2026-10-25T12:18:42,classificador,2026-10-25_121842_classificador,20261019,385.0,"{""acc_mlp"": {""ati_ref"": 0.8128, ""sen_int"": 0.8558, ""vis_ver"": 0.8396, ""seq_glo"": 0.8148}, ""acc_tri"": {""ati_ref"": 0.8149, ""sen_int"": 0.8445, ""vis_ver"": 0.8403, ""seq_glo"": 0.8017}}"
+2026-10-25T12:19:09,classificador,2026-10-25_121909_classificador,20261019,381.3,"{""acc_mlp"": {""ati_ref"": 0.8128, ""sen_int"": 0.8558, ""vis_ver"": 0.8396, ""seq_glo"": 0.8148}, ""acc_tri"": {""ati_ref"": 0.8149, ""sen_int"": 0.8445, ""vis_ver"": 0.8403, ""seq_glo"": 0.8017}}"
+2026-10-26T09:08:00,rl_rapido,2026-10-26_090800_rl_rapido,20261019,39.0,"{""lambda"": 0.01}"
+2026-10-27T07:52:47,rl,2026-10-27_075247_rl,20261019,3745.3,"{""lambda"": 0.01, ""acc_min_teste"": 0.9892, ""questoes_teste"": 42.848}"

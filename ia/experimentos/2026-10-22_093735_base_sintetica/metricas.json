@@ -1,0 +1,210 @@
+{
+  "duracao_segundos": 3.7,
+  "itens_status": "PUBLICADO",
+  "calibracao": {
+    "convergiu": true,
+    "iteracoes": 13,
+    "erro_max_r": 0.00188,
+    "erro_max_p": 0.00022,
+    "itens_no_piso_r_minimo": [
+      40
+    ]
+  },
+  "correlacao_tracos": {
+    "matriz_sigma": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.6597
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.6597,
+        0.0,
+        1.0
+      ]
+    ],
+    "pares": {
+      "sen_int-seq_glo": {
+        "alvo_escores": 0.44,
+        "rho_theta": 0.6597,
+        "obtido_escores": 0.44
+      }
+    }
+  },
+  "alfa_cronbach": {
+    "ati_ref": 0.608,
+    "sen_int": 0.7675,
+    "vis_ver": 0.7402,
+    "seq_glo": 0.5612
+  },
+  "alfa_referencia": {
+    "ati_ref": 0.6,
+    "sen_int": 0.77,
+    "vis_ver": 0.74,
+    "seq_glo": 0.56
+  },
+  "correlacao_entre_escores": {
+    "escore_ati_ref": {
+      "escore_ati_ref": 1.0,
+      "escore_sen_int": 0.0011,
+      "escore_vis_ver": -0.0013,
+      "escore_seq_glo": 0.0022
+    },
+    "escore_sen_int": {
+      "escore_ati_ref": 0.0011,
+      "escore_sen_int": 1.0,
+      "escore_vis_ver": -0.0001,
+      "escore_seq_glo": 0.427
+    },
+    "escore_vis_ver": {
+      "escore_ati_ref": -0.0013,
+      "escore_sen_int": -0.0001,
+      "escore_vis_ver": 1.0,
+      "escore_seq_glo": 0.0017
+    },
+    "escore_seq_glo": {
+      "escore_ati_ref": 0.0022,
+      "escore_sen_int": 0.427,
+      "escore_vis_ver": 0.0017,
+      "escore_seq_glo": 1.0
+    }
+  },
+  "conjuntos": {
+    "treino": {
+      "n": 70000,
+      "ati_ref": {
+        "prop_polo_a": 0.4977,
+        "escore_medio": -0.013,
+        "prop_intensidade": {
+          "leve": 0.5348,
+          "moderada": 0.3618,
+          "forte": 0.1034
+        }
+      },
+      "sen_int": {
+        "prop_polo_a": 0.5009,
+        "escore_medio": 0.005,
+        "prop_intensidade": {
+          "leve": 0.3964,
+          "moderada": 0.3881,
+          "forte": 0.2155
+        }
+      },
+      "vis_ver": {
+        "prop_polo_a": 0.5022,
+        "escore_medio": 0.033,
+        "prop_intensidade": {
+          "leve": 0.4188,
+          "moderada": 0.3939,
+          "forte": 0.1873
+        }
+      },
+      "seq_glo": {
+        "prop_polo_a": 0.5007,
+        "escore_medio": 0.022,
+        "prop_intensidade": {
+          "leve": 0.5582,
+          "moderada": 0.3601,
+          "forte": 0.0817
+        }
+      }
+    },
+    "validacao": {
+      "n": 15000,
+      "ati_ref": {
+        "prop_polo_a": 0.5017,
+        "escore_medio": 0.036,
+        "prop_intensidade": {
+          "leve": 0.525,
+          "moderada": 0.3701,
+          "forte": 0.1049
+        }
+      },
+      "sen_int": {
+        "prop_polo_a": 0.4935,
+        "escore_medio": -0.052,
+        "prop_intensidade": {
+          "leve": 0.395,
+          "moderada": 0.3903,
+          "forte": 0.2147
+        }
+      },
+      "vis_ver": {
+        "prop_polo_a": 0.4925,
+        "escore_medio": -0.075,
+        "prop_intensidade": {
+          "leve": 0.4244,
+          "moderada": 0.3901,
+          "forte": 0.1855
+        }
+      },
+      "seq_glo": {
+        "prop_polo_a": 0.4991,
+        "escore_medio": -0.056,
+        "prop_intensidade": {
+          "leve": 0.5527,
+          "moderada": 0.3621,
+          "forte": 0.0852
+        }
+      }
+    },
+    "teste": {
+      "n": 15000,
+      "ati_ref": {
+        "prop_polo_a": 0.5059,
+        "escore_medio": 0.043,
+        "prop_intensidade": {
+          "leve": 0.5336,
+          "moderada": 0.363,
+          "forte": 0.1034
+        }
+      },
+      "sen_int": {
+        "prop_polo_a": 0.4979,
+        "escore_medio": -0.032,
+        "prop_intensidade": {
+          "leve": 0.3963,
+          "moderada": 0.3917,
+          "forte": 0.2119
+        }
+      },
+      "vis_ver": {
+        "prop_polo_a": 0.4942,
+        "escore_medio": -0.019,
+        "prop_intensidade": {
+          "leve": 0.4237,
+          "moderada": 0.3887,
+          "forte": 0.1875
+        }
+      },
+      "seq_glo": {
+        "prop_polo_a": 0.4971,
+        "escore_medio": -0.014,
+        "prop_intensidade": {
+          "leve": 0.5583,
+          "moderada": 0.3556,
+          "forte": 0.0861
+        }
+      }
+    }
+  },
+  "sha256_arquivos": {
+    "treino.parquet": "44f0647a7b6080bab64a66ff98cca45982bfe10ba56b8ca9831e4acb75ba4643",
+    "validacao.parquet": "09999eb6135cc9d0aae27708ddfbf15b66d6bd6de3397851eb51789a7cb65429",
+    "teste.parquet": "708b5b822aafe08dc90698c83f0f62a66228710fee82e5cd7507f6cd5b5ee938"
+  }
+}

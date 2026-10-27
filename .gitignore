@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# Dados gerados (são reproduzíveis pela seed; não versionar arquivos grandes)
+ia/dados/sintetico/*
+!ia/dados/sintetico/.gitkeep
+ia/dados/bruto/*
+!ia/dados/bruto/.gitkeep
+
+# Modelos treinados grandes
+ia/experimentos/**/*.pt
+ia/experimentos/**/*.zip
+
+# Node / Nuxt
+node_modules/
+.nuxt/
+.output/
+dist/
+
+# Segredos (LGPD: nunca versionar credenciais)
+.env
+*.env

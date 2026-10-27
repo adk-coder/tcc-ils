@@ -1,0 +1,163 @@
+{
+  "duracao_segundos": 3745.3,
+  "lambda_escolhido": 0.01,
+  "meta_atingida_na_validacao": true,
+  "classificador": "experimentos\\2026-10-25_121909_classificador\\classificador.pt",
+  "validacao": {
+    "0.01": {
+      "por_dimensao": {
+        "ati_ref": {
+          "acuracia_polo": 0.9891,
+          "kappa_polo": 0.9781,
+          "media_questoes": 10.703
+        },
+        "sen_int": {
+          "acuracia_polo": 0.9944,
+          "kappa_polo": 0.9888,
+          "media_questoes": 10.797
+        },
+        "vis_ver": {
+          "acuracia_polo": 0.9919,
+          "kappa_polo": 0.9837,
+          "media_questoes": 10.567
+        },
+        "seq_glo": {
+          "acuracia_polo": 0.9948,
+          "kappa_polo": 0.9896,
+          "media_questoes": 10.787
+        }
+      },
+      "geral": {
+        "acuracia_polo_media": 0.9925,
+        "acuracia_polo_minima": 0.9891,
+        "todas_dimensoes_ge_90": true,
+        "media_questoes_total": 42.854,
+        "desvio_questoes_total": 3.48
+      }
+    },
+    "0.02": {
+      "por_dimensao": {
+        "ati_ref": {
+          "acuracia_polo": 0.8212,
+          "kappa_polo": 0.6424,
+          "media_questoes": 5.127
+        },
+        "sen_int": {
+          "acuracia_polo": 0.8852,
+          "kappa_polo": 0.7704,
+          "media_questoes": 4.99
+        },
+        "vis_ver": {
+          "acuracia_polo": 0.8839,
+          "kappa_polo": 0.7678,
+          "media_questoes": 5.602
+        },
+        "seq_glo": {
+          "acuracia_polo": 0.8642,
+          "kappa_polo": 0.7284,
+          "media_questoes": 6.272
+        }
+      },
+      "geral": {
+        "acuracia_polo_media": 0.8636,
+        "acuracia_polo_minima": 0.8212,
+        "todas_dimensoes_ge_90": false,
+        "media_questoes_total": 21.99,
+        "desvio_questoes_total": 6.763
+      }
+    },
+    "0.03": {
+      "por_dimensao": {
+        "ati_ref": {
+          "acuracia_polo": 0.7774,
+          "kappa_polo": 0.5547,
+          "media_questoes": 3.353
+        },
+        "sen_int": {
+          "acuracia_polo": 0.8438,
+          "kappa_polo": 0.6877,
+          "media_questoes": 2.617
+        },
+        "vis_ver": {
+          "acuracia_polo": 0.8442,
+          "kappa_polo": 0.6883,
+          "media_questoes": 2.794
+        },
+        "seq_glo": {
+          "acuracia_polo": 0.7876,
+          "kappa_polo": 0.5752,
+          "media_questoes": 2.772
+        }
+      },
+      "geral": {
+        "acuracia_polo_media": 0.8132,
+        "acuracia_polo_minima": 0.7774,
+        "todas_dimensoes_ge_90": false,
+        "media_questoes_total": 11.536,
+        "desvio_questoes_total": 4.31
+      }
+    },
+    "0.05": {
+      "por_dimensao": {
+        "ati_ref": {
+          "acuracia_polo": 0.7426,
+          "kappa_polo": 0.4852,
+          "media_questoes": 1.069
+        },
+        "sen_int": {
+          "acuracia_polo": 0.8357,
+          "kappa_polo": 0.6714,
+          "media_questoes": 1.01
+        },
+        "vis_ver": {
+          "acuracia_polo": 0.8209,
+          "kappa_polo": 0.6418,
+          "media_questoes": 1.008
+        },
+        "seq_glo": {
+          "acuracia_polo": 0.7077,
+          "kappa_polo": 0.4153,
+          "media_questoes": 0.679
+        }
+      },
+      "geral": {
+        "acuracia_polo_media": 0.7767,
+        "acuracia_polo_minima": 0.7077,
+        "todas_dimensoes_ge_90": false,
+        "media_questoes_total": 3.766,
+        "desvio_questoes_total": 0.807
+      }
+    }
+  },
+  "teste": {
+    "por_dimensao": {
+      "ati_ref": {
+        "acuracia_polo": 0.9892,
+        "kappa_polo": 0.9784,
+        "media_questoes": 10.701
+      },
+      "sen_int": {
+        "acuracia_polo": 0.9939,
+        "kappa_polo": 0.9877,
+        "media_questoes": 10.792
+      },
+      "vis_ver": {
+        "acuracia_polo": 0.9929,
+        "kappa_polo": 0.9859,
+        "media_questoes": 10.57
+      },
+      "seq_glo": {
+        "acuracia_polo": 0.9939,
+        "kappa_polo": 0.9877,
+        "media_questoes": 10.785
+      }
+    },
+    "geral": {
+      "acuracia_polo_media": 0.9925,
+      "acuracia_polo_minima": 0.9892,
+      "todas_dimensoes_ge_90": true,
+      "media_questoes_total": 42.848,
+      "desvio_questoes_total": 3.483
+    }
+  }
+}

@@ -1,0 +1,25 @@
+nome_experimento: base_sintetica
+seed: 20261019
+n_respondentes: 100000
+divisao:
+  treino: 0.7
+  validacao: 0.15
+  teste: 0.15
+arquivo_itens: configs/itens_ils.yaml
+diretorio_saida: dados/sintetico
+formato: parquet
+correlacoes_escores_alvo:
+  sen_int-seq_glo: 0.44
+alfa_referencia:
+  ati_ref: 0.6
+  sen_int: 0.77
+  vis_ver: 0.74
+  seq_glo: 0.56
+calibracao:
+  n_amostra: 50000
+  max_iteracoes: 30
+  tolerancia: 0.002
+  a_maximo: 4.0
+  r_minimo: 0.02
+itens_status: PUBLICADO
+itens_tipo_correlacao: item_resto

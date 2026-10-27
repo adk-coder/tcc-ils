@@ -1,0 +1,13 @@
+nome_experimento: classificador
+seed: 20261019
+diretorio_dados: dados/sintetico
+rede:
+  camadas:
+  - 256
+  - 256
+  dropout: 0.0
+  lr: 0.001
+  weight_decay: 0.0
+  lote: 512
+  max_epocas: 60
+  paciencia: 6

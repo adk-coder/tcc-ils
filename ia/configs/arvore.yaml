@@ -1,0 +1,23 @@
+# Abordagem 1 — linha de base com árvore de decisão (etapa 2).
+
+nome_experimento: arvore
+seed: 20261019
+diretorio_dados: dados/sintetico
+
+criterio: entropy           # ganho de informação (mesma ideia do C4.5/ID3) | gini
+min_amostras_folha: 5       # o gabarito é função exata das respostas, então folhas pequenas
+                            # não "decoram ruído"; com 20 a árvore completa não passava de ~95%
+
+# Profundidades testadas na VALIDAÇÃO para montar a curva acurácia × nº de questões.
+# Profundidade 11 com itens_entrada=dimensao = pode perguntar todos os itens.
+profundidades: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+# Regra de escolha (só com a validação): para cada dimensão, a MENOR
+# profundidade cuja acurácia do polo na validação seja >= meta_acuracia.
+meta_acuracia: 0.90
+
+# Rodar as duas variantes no mesmo experimento:
+#   dimensao: cada árvore só pergunta os 11 itens da sua dimensão
+#   todos:    cada árvore pode perguntar qualquer item (aproveita a correlação
+#             sensorial/intuitivo × sequencial/global)
+variantes: [dimensao, todos]

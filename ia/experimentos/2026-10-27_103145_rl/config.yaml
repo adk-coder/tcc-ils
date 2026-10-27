@@ -1,0 +1,46 @@
+nome_experimento: rl
+seed: 20261019
+diretorio_dados: dados/sintetico
+classificador: auto
+lambdas:
+- 0.01
+- 0.015
+- 0.02
+- 0.025
+- 0.03
+- 0.04
+recompensa: potencial
+treino:
+  passos: 1500000
+  avaliar_a_cada: 250000
+  n_avaliacao_parcial: 3000
+  n_envs: 8
+ppo:
+  learning_rate: 0.0003
+  n_steps: 1024
+  batch_size: 512
+  n_epochs: 10
+  gamma: 1.0
+  gae_lambda: 0.95
+  clip_range: 0.2
+  ent_coef: 0.005
+  rede:
+  - 256
+  - 256
+gulosa:
+  limiares:
+  - 0.8
+  - 0.82
+  - 0.84
+  - 0.86
+  - 0.88
+  - 0.9
+  - 0.92
+  - 0.94
+  - 0.96
+meta_acuracia: 0.9
+rapido:
+  passos: 60000
+  avaliar_a_cada: 20000
+  n_validacao: 2000
+modo_rapido: false

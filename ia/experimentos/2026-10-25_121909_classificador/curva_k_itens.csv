@@ -1,0 +1,145 @@
+modelo,dimensao,k,acuracia,log_loss
+"MLP, só a dimensão",ati_ref,0,0.5017,0.6935
+"MLP, com as outras 3 dimensões",ati_ref,0,0.4995,0.7006
+TRI (modelo do TAC),ati_ref,0,0.4983,0.6932
+"MLP, só a dimensão",ati_ref,1,0.6923,0.618
+"MLP, com as outras 3 dimensões",ati_ref,1,0.6916,0.62
+TRI (modelo do TAC),ati_ref,1,0.6923,0.613
+"MLP, só a dimensão",ati_ref,2,0.7139,0.5454
+"MLP, com as outras 3 dimensões",ati_ref,2,0.7079,0.5496
+TRI (modelo do TAC),ati_ref,2,0.7158,0.5431
+"MLP, só a dimensão",ati_ref,3,0.7735,0.488
+"MLP, com as outras 3 dimensões",ati_ref,3,0.7711,0.4924
+TRI (modelo do TAC),ati_ref,3,0.7735,0.486
+"MLP, só a dimensão",ati_ref,4,0.7836,0.4331
+"MLP, com as outras 3 dimensões",ati_ref,4,0.7858,0.4361
+TRI (modelo do TAC),ati_ref,4,0.789,0.4301
+"MLP, só a dimensão",ati_ref,5,0.8265,0.3834
+"MLP, com as outras 3 dimensões",ati_ref,5,0.8243,0.3867
+TRI (modelo do TAC),ati_ref,5,0.8265,0.381
+"MLP, só a dimensão",ati_ref,6,0.8355,0.3317
+"MLP, com as outras 3 dimensões",ati_ref,6,0.8391,0.3354
+TRI (modelo do TAC),ati_ref,6,0.8416,0.3293
+"MLP, só a dimensão",ati_ref,7,0.8777,0.2798
+"MLP, com as outras 3 dimensões",ati_ref,7,0.8766,0.2856
+TRI (modelo do TAC),ati_ref,7,0.8777,0.2772
+"MLP, só a dimensão",ati_ref,8,0.8831,0.2321
+"MLP, com as outras 3 dimensões",ati_ref,8,0.8839,0.2387
+TRI (modelo do TAC),ati_ref,8,0.8861,0.229
+"MLP, só a dimensão",ati_ref,9,0.923,0.1771
+"MLP, com as outras 3 dimensões",ati_ref,9,0.92,0.188
+TRI (modelo do TAC),ati_ref,9,0.923,0.1744
+"MLP, só a dimensão",ati_ref,10,0.9254,0.1093
+"MLP, com as outras 3 dimensões",ati_ref,10,0.9241,0.1223
+TRI (modelo do TAC),ati_ref,10,0.9305,0.1033
+"MLP, só a dimensão",ati_ref,11,1.0,0.0144
+"MLP, com as outras 3 dimensões",ati_ref,11,0.9997,0.0277
+TRI (modelo do TAC),ati_ref,11,1.0,0.0
+"MLP, só a dimensão",sen_int,0,0.5065,0.6933
+"MLP, com as outras 3 dimensões",sen_int,0,0.6639,0.6191
+TRI (modelo do TAC),sen_int,0,0.4935,0.6932
+"MLP, só a dimensão",sen_int,1,0.7399,0.5658
+"MLP, com as outras 3 dimensões",sen_int,1,0.7503,0.5235
+TRI (modelo do TAC),sen_int,1,0.7399,0.5654
+"MLP, só a dimensão",sen_int,2,0.7706,0.4752
+"MLP, com as outras 3 dimensões",sen_int,2,0.7907,0.4483
+TRI (modelo do TAC),sen_int,2,0.7715,0.4745
+"MLP, só a dimensão",sen_int,3,0.8196,0.4022
+"MLP, com as outras 3 dimensões",sen_int,3,0.8227,0.3897
+TRI (modelo do TAC),sen_int,3,0.82,0.4009
+"MLP, só a dimensão",sen_int,4,0.8435,0.3418
+"MLP, com as outras 3 dimensões",sen_int,4,0.8519,0.3324
+TRI (modelo do TAC),sen_int,4,0.8427,0.3405
+"MLP, só a dimensão",sen_int,5,0.8748,0.2889
+"MLP, com as outras 3 dimensões",sen_int,5,0.8751,0.2832
+TRI (modelo do TAC),sen_int,5,0.875,0.2877
+"MLP, só a dimensão",sen_int,6,0.8835,0.2522
+"MLP, com as outras 3 dimensões",sen_int,6,0.888,0.2508
+TRI (modelo do TAC),sen_int,6,0.8854,0.2512
+"MLP, só a dimensão",sen_int,7,0.9121,0.211
+"MLP, com as outras 3 dimensões",sen_int,7,0.91,0.2119
+TRI (modelo do TAC),sen_int,7,0.9121,0.2085
+"MLP, só a dimensão",sen_int,8,0.9177,0.1743
+"MLP, com as outras 3 dimensões",sen_int,8,0.918,0.1748
+TRI (modelo do TAC),sen_int,8,0.9174,0.17
+"MLP, só a dimensão",sen_int,9,0.9446,0.131
+"MLP, com as outras 3 dimensões",sen_int,9,0.9425,0.1347
+TRI (modelo do TAC),sen_int,9,0.9447,0.1268
+"MLP, só a dimensão",sen_int,10,0.949,0.0788
+"MLP, com as outras 3 dimensões",sen_int,10,0.9502,0.0849
+TRI (modelo do TAC),sen_int,10,0.9503,0.0745
+"MLP, só a dimensão",sen_int,11,1.0,0.0127
+"MLP, com as outras 3 dimensões",sen_int,11,0.9992,0.0211
+TRI (modelo do TAC),sen_int,11,1.0,0.0
+"MLP, só a dimensão",vis_ver,0,0.4925,0.6954
+"MLP, com as outras 3 dimensões",vis_ver,0,0.5023,0.7051
+TRI (modelo do TAC),vis_ver,0,0.4925,0.6932
+"MLP, só a dimensão",vis_ver,1,0.7214,0.5845
+"MLP, com as outras 3 dimensões",vis_ver,1,0.719,0.5914
+TRI (modelo do TAC),vis_ver,1,0.7214,0.5815
+"MLP, só a dimensão",vis_ver,2,0.7561,0.4977
+"MLP, com as outras 3 dimensões",vis_ver,2,0.7481,0.5026
+TRI (modelo do TAC),vis_ver,2,0.7567,0.4946
+"MLP, só a dimensão",vis_ver,3,0.8063,0.4246
+"MLP, com as outras 3 dimensões",vis_ver,3,0.8077,0.4305
+TRI (modelo do TAC),vis_ver,3,0.8075,0.4227
+"MLP, só a dimensão",vis_ver,4,0.8341,0.3598
+"MLP, com as outras 3 dimensões",vis_ver,4,0.833,0.3636
+TRI (modelo do TAC),vis_ver,4,0.835,0.3572
+"MLP, só a dimensão",vis_ver,5,0.8622,0.31
+"MLP, com as outras 3 dimensões",vis_ver,5,0.8594,0.3139
+TRI (modelo do TAC),vis_ver,5,0.8619,0.3078
+"MLP, só a dimensão",vis_ver,6,0.8819,0.2677
+"MLP, com as outras 3 dimensões",vis_ver,6,0.8787,0.2733
+TRI (modelo do TAC),vis_ver,6,0.8825,0.2661
+"MLP, só a dimensão",vis_ver,7,0.9051,0.2229
+"MLP, com as outras 3 dimensões",vis_ver,7,0.9015,0.2271
+TRI (modelo do TAC),vis_ver,7,0.9051,0.2202
+"MLP, só a dimensão",vis_ver,8,0.9159,0.1802
+"MLP, com as outras 3 dimensões",vis_ver,8,0.9141,0.1865
+TRI (modelo do TAC),vis_ver,8,0.9168,0.1764
+"MLP, só a dimensão",vis_ver,9,0.9457,0.1329
+"MLP, com as outras 3 dimensões",vis_ver,9,0.9407,0.1386
+TRI (modelo do TAC),vis_ver,9,0.9457,0.1284
+"MLP, só a dimensão",vis_ver,10,0.9445,0.087
+"MLP, com as outras 3 dimensões",vis_ver,10,0.9477,0.0945
+TRI (modelo do TAC),vis_ver,10,0.9469,0.0815
+"MLP, só a dimensão",vis_ver,11,1.0,0.0129
+"MLP, com as outras 3 dimensões",vis_ver,11,0.9975,0.0273
+TRI (modelo do TAC),vis_ver,11,1.0,0.0
+"MLP, só a dimensão",seq_glo,0,0.4991,0.6932
+"MLP, com as outras 3 dimensões",seq_glo,0,0.6579,0.6234
+TRI (modelo do TAC),seq_glo,0,0.4991,0.6932
+"MLP, só a dimensão",seq_glo,1,0.679,0.6237
+"MLP, com as outras 3 dimensões",seq_glo,1,0.7057,0.5712
+TRI (modelo do TAC),seq_glo,1,0.679,0.6232
+"MLP, só a dimensão",seq_glo,2,0.7141,0.5536
+"MLP, com as outras 3 dimensões",seq_glo,2,0.7449,0.5171
+TRI (modelo do TAC),seq_glo,2,0.7135,0.5525
+"MLP, só a dimensão",seq_glo,3,0.7601,0.5033
+"MLP, com as outras 3 dimensões",seq_glo,3,0.7715,0.4742
+TRI (modelo do TAC),seq_glo,3,0.7595,0.5018
+"MLP, só a dimensão",seq_glo,4,0.7837,0.4476
+"MLP, com as outras 3 dimensões",seq_glo,4,0.7963,0.4276
+TRI (modelo do TAC),seq_glo,4,0.7827,0.447
+"MLP, só a dimensão",seq_glo,5,0.8211,0.3891
+"MLP, com as outras 3 dimensões",seq_glo,5,0.8292,0.3777
+TRI (modelo do TAC),seq_glo,5,0.8219,0.3865
+"MLP, só a dimensão",seq_glo,6,0.8392,0.3406
+"MLP, com as outras 3 dimensões",seq_glo,6,0.8447,0.3343
+TRI (modelo do TAC),seq_glo,6,0.8407,0.3391
+"MLP, só a dimensão",seq_glo,7,0.8703,0.2922
+"MLP, com as outras 3 dimensões",seq_glo,7,0.8705,0.2878
+TRI (modelo do TAC),seq_glo,7,0.8703,0.2892
+"MLP, só a dimensão",seq_glo,8,0.8819,0.2449
+"MLP, com as outras 3 dimensões",seq_glo,8,0.8873,0.24
+TRI (modelo do TAC),seq_glo,8,0.8838,0.2377
+"MLP, só a dimensão",seq_glo,9,0.92,0.1921
+"MLP, com as outras 3 dimensões",seq_glo,9,0.9177,0.1882
+TRI (modelo do TAC),seq_glo,9,0.92,0.1826
+"MLP, só a dimensão",seq_glo,10,0.9236,0.1144
+"MLP, com as outras 3 dimensões",seq_glo,10,0.9249,0.1231
+TRI (modelo do TAC),seq_glo,10,0.9255,0.1102
+"MLP, só a dimensão",seq_glo,11,1.0,0.0086
+"MLP, com as outras 3 dimensões",seq_glo,11,0.9995,0.036
+TRI (modelo do TAC),seq_glo,11,1.0,0.0
