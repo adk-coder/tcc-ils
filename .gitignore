@@ -27,3 +27,6 @@ dist/
 
 # Banco SQLite de desenvolvimento
 *.db
+
+# Fontes de terceiros (citar no TCC; não versionar)
+docs/fontes/
