@@ -109,14 +109,10 @@ async function responder(resposta: 'a' | 'b') {
 
       <!-- 3. resultado -->
       <template v-else-if="estado.status === 'concluido' && estado.resultado">
-        <p class="text-lg">
-          Pronto! Você respondeu <strong class="font-display"><span class="marca-texto">{{ estado.respondidas }} perguntas</span></strong>
-          em vez de 44.
-        </p>
-        <ResultadoEstilo :resultado="estado.resultado" />
+        <ResultadoEstilo :resultado="estado.resultado" :respondidas="estado.respondidas" />
         <p class="folha p-5 text-sm text-tinta-suave">
-          Lembre: isto mostra <strong class="text-tinta">preferências</strong>, não limites. Todo mundo usa os dois lados
-          de cada par, e treinar o lado de que você gosta menos também ajuda a aprender.
+          Lembre: isto mostra <strong class="text-tinta">preferências</strong>, não limites. Treinar o jeito de que você
+          gosta menos também ajuda a aprender.
         </p>
         <div class="flex flex-wrap items-center gap-3 border-t border-linha pt-4">
           <Botao v-if="!confirmarRefazer" variante="discreto" pequeno @click="confirmarRefazer = true">Refazer o questionário</Botao>

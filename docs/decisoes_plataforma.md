@@ -134,3 +134,14 @@ TCC). Desenvolvimento e testes em SQLite; produção em PostgreSQL pela variáve
   à calibração com estatísticas de universitários dos EUA (Litzinger et al.,
   2005) e ao público do 9º ano, isso é declarado como limitação do trabalho.
 - O PDF da fonte fica fora do repositório (`docs/fontes/` no `.gitignore`).
+
+### P10.2 — Tela de resultado pensada para o aluno
+- Teste com a tela anterior: mostrar os dois polos de cada par e a "certeza da IA"
+  em porcentagem deixava o aluno sem saber qual era, afinal, o perfil dele.
+- Nova ordem: (1) o PERFIL em uma frase ("Você aprende melhor colocando a mão na
+  massa, com exemplos concretos, vendo desenhos e esquemas e seguindo um passo de
+  cada vez"), com os 4 estilos em destaque; (2) "Como estudar no MatIF": as 4
+  dicas juntas; (3) cada parte explicada só com o estilo do aluno (o oposto
+  aparece como lembrete de que todo mundo usa os dois); (4) os números da IA
+  (perguntas e "segurança" por parte) num bloco recolhido, "Como a IA chegou
+  nesse resultado?", para transparência sem confundir.
