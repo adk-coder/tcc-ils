@@ -163,3 +163,19 @@ TCC). Desenvolvimento e testes em SQLite; produção em PostgreSQL pela variáve
   Android); no iPhone, instrução manual (o Safari não tem convite automático).
 - Requisito: PWA só funciona em HTTPS (ou localhost). No celular, só dá para
   testar depois da publicação.
+
+## P12 — Painel do professor e "continuar de onde parou"
+- Painel (`/salas/{id}/desempenho`, só o professor dono): acerto de PRIMEIRA
+  tentativa por exercício (a 1ª resposta mede o que o aluno sabia antes de ver a
+  correção; mesma regra dos pontos), a alternativa errada mais marcada (mostra
+  QUAL confusão a turma faz, ex.: somar numeradores e denominadores), quantos
+  concluíram cada módulo e, por aluno, certos, pontos e última atividade (em
+  vermelho quem está há 7+ dias sem responder). "O que vale a pena revisar" lista
+  os 5 exercícios com menor acerto de primeira.
+- Só alunos ainda matriculados entram nas contas; os dados não saem da sala do
+  professor (404 para os outros), coerente com a LGPD.
+- O painel não mostra o estilo de aprendizagem dos alunos (decisão P10: o
+  resultado é só do aluno).
+- "Continuar de onde parou" (`/eu/continuar`): o módulo da última resposta, se
+  ainda faltar exercício; senão o próximo da mesma sala; senão qualquer módulo
+  com exercício pendente. Sem pendências, o início diz que o aluno está em dia.

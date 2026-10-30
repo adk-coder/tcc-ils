@@ -113,3 +113,37 @@ export interface EstadoEstilo {
   concluido_em: string | null
   textos_provisorios: boolean
 }
+
+// ------------------------------------------------------------ acompanhamento
+export interface DesempenhoExercicio {
+  id: number
+  numero: number
+  enunciado: string
+  responderam: number
+  acerto_primeira: number | null          // 0 a 1; null = ninguém respondeu
+  erro_comum: { alternativa: number; quantos: number } | null
+}
+
+export interface DesempenhoModulo {
+  id: number
+  titulo: string
+  concluiram: number
+  exercicios: DesempenhoExercicio[]
+}
+
+export interface DesempenhoSala {
+  n_alunos: number
+  total_exercicios: number
+  acerto_primeira_medio: number | null
+  modulos: DesempenhoModulo[]
+  alunos: { id: number; nome: string; acertados: number; pontos: number; ultima_atividade: string | null }[]
+}
+
+export interface Continuar {
+  sala_id: number
+  sala_nome: string
+  modulo_id: number
+  modulo_titulo: string
+  feitos: number
+  total: number
+}

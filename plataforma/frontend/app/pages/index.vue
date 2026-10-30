@@ -1,6 +1,6 @@
 <!-- Início: o que fazer agora. Aluno vê o próprio progresso; professor vê as salas. -->
 <script setup lang="ts">
-import type { EstadoEstilo, Progresso, Sala } from '~/utils/tipos'
+import type { Continuar, EstadoEstilo, Progresso, Sala } from '~/utils/tipos'
 import { POLOS } from '~/utils/estilos'
 
 useHead({ title: 'Início — MatIF' })
@@ -11,6 +11,9 @@ const professor = sessao.ehProfessor
 const { data: salas, refresh } = await useAsyncData('inicio-salas', () => api<Sala[]>('/salas'), { default: () => [] })
 const { data: progresso } = await useAsyncData('inicio-progresso',
   () => (professor.value ? Promise.resolve(null) : api<Progresso>('/eu/progresso')))
+// próximo módulo a estudar (null = em dia ou sem salas)
+const { data: continuar } = await useAsyncData('inicio-continuar',
+  () => (professor.value ? Promise.resolve(null) : api<Continuar | null>('/eu/continuar').catch(() => null)))
 // questionário de estilos: se der erro (ex.: modelo ainda não exportado), o cartão só não aparece
 const { data: estilo } = await useAsyncData('inicio-estilo',
   () => (professor.value ? Promise.resolve(null) : api<EstadoEstilo>('/eu/estilo').catch(() => null)))
@@ -40,6 +43,26 @@ const { data: estilo } = await useAsyncData('inicio-estilo',
         <p class="mt-1 text-sm text-tinta-suave">exercícios certos</p>
       </div>
     </section>
+
+    <!-- continuar de onde parou -->
+    <section v-if="!professor && continuar" class="folha-caderno flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+             aria-labelledby="titulo-continuar">
+      <div class="min-w-0">
+        <p id="titulo-continuar" class="text-sm font-medium uppercase tracking-wide text-caneta">Continue de onde parou</p>
+        <p class="mt-1 truncate font-display text-xl font-semibold">{{ continuar.modulo_titulo }}</p>
+        <p class="text-sm text-tinta-suave">
+          {{ continuar.sala_nome }} · {{ continuar.feitos }} de {{ continuar.total }} exercícios certos
+        </p>
+      </div>
+      <NuxtLink :to="`/modulos/${continuar.modulo_id}`"
+                class="inline-flex shrink-0 items-center justify-center rounded-lg bg-caneta px-5 py-3 font-medium text-white no-underline hover:bg-caneta-escura">
+        {{ continuar.feitos ? 'Continuar' : 'Começar' }}
+      </NuxtLink>
+    </section>
+    <p v-else-if="!professor && salas.length && progresso?.exercicios_acertados" class="folha p-5 text-tinta-suave">
+      <strong class="text-tinta">Você está em dia!</strong> Fez todos os exercícios disponíveis. Quando o professor
+      publicar módulos novos, eles aparecem aqui.
+    </p>
 
     <!-- questionário de estilos: convite (ou atalho para o resultado) -->
     <NuxtLink v-if="!professor && estilo" to="/estilo"

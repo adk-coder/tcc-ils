@@ -29,7 +29,7 @@ const paragrafos = computed(() =>
 function registrar(exercicio: ExercicioAluno, r: RespostaSaida) {
   exercicio.ja_respondeu = true
   if (r.correta) exercicio.ja_acertou = true
-  clearNuxtData(chave => chave.startsWith('modulos-') || chave.startsWith('ranking-') || chave === 'inicio-progresso')
+  clearNuxtData(chave => chave.startsWith('modulos-') || chave.startsWith('ranking-') || chave === 'inicio-progresso' || chave === 'inicio-continuar' || chave.startsWith('desempenho-'))
 }
 
 // ---- professor

@@ -55,9 +55,15 @@ async function sairDaSala() {
     <Aviso v-if="error">Sala não encontrada ou você não tem acesso a ela.</Aviso>
 
     <template v-else-if="sala">
-      <header>
-        <h1 class="text-3xl md:text-4xl">{{ sala.nome }}</h1>
-        <p class="mt-1 text-tinta-suave">Professor: {{ sala.professor_nome }}</p>
+      <header class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h1 class="text-3xl md:text-4xl">{{ sala.nome }}</h1>
+          <p class="mt-1 text-tinta-suave">Professor: {{ sala.professor_nome }}</p>
+        </div>
+        <NuxtLink v-if="professor" :to="`/desempenho/${id}`"
+                  class="inline-flex items-center gap-2 rounded-lg bg-caneta px-4 py-2.5 font-medium text-white no-underline hover:bg-caneta-escura">
+          <Icone nome="grafico" tamanho="p" /> Desempenho da turma
+        </NuxtLink>
       </header>
 
       <!-- professor: código de convite -->

@@ -203,3 +203,50 @@ class EstadoEstilo(BaseModel):
 class RespostaEstiloEntrada(BaseModel):
     item: int = Field(ge=1, le=44)      # a pergunta que o aluno viu (confere se é a atual)
     resposta: Literal["a", "b"]
+
+
+# ---------------------------------------------------------------- acompanhamento
+class ErroComum(BaseModel):
+    alternativa: int           # índice da alternativa errada mais marcada (0 = A)
+    quantos: int
+
+
+class DesempenhoExercicio(BaseModel):
+    id: int
+    numero: int                # 1º, 2º... dentro do módulo
+    enunciado: str
+    responderam: int           # alunos que tentaram pelo menos uma vez
+    acerto_primeira: float | None = None   # fração que acertou de primeira (None se ninguém respondeu)
+    erro_comum: ErroComum | None = None
+
+
+class DesempenhoModulo(BaseModel):
+    id: int
+    titulo: str
+    concluiram: int            # alunos que acertaram todos os exercícios do módulo
+    exercicios: list[DesempenhoExercicio]
+
+
+class DesempenhoAluno(BaseModel):
+    id: int
+    nome: str
+    acertados: int
+    pontos: int
+    ultima_atividade: datetime | None = None
+
+
+class DesempenhoSala(BaseModel):
+    n_alunos: int
+    total_exercicios: int
+    acerto_primeira_medio: float | None = None
+    modulos: list[DesempenhoModulo]
+    alunos: list[DesempenhoAluno]
+
+
+class Continuar(BaseModel):
+    sala_id: int
+    sala_nome: str
+    modulo_id: int
+    modulo_titulo: str
+    feitos: int                # exercícios já acertados no módulo
+    total: int
