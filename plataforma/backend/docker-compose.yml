@@ -1,0 +1,16 @@
+# PostgreSQL para desenvolvimento (opcional; precisa do Docker Desktop).
+#   docker compose up -d
+# e use DATABASE_URL=postgresql+psycopg://tcc:tcc@localhost:5432/tcc
+services:
+  banco:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: tcc
+      POSTGRES_PASSWORD: tcc
+      POSTGRES_DB: tcc
+    ports:
+      - "5432:5432"
+    volumes:
+      - dados_postgres:/var/lib/postgresql/data
+volumes:
+  dados_postgres:
