@@ -1,271 +1,271 @@
 {
-  "status": "PROVISORIO",
-  "fonte": "PREENCHER: referência da versão em português do ILS usada no TCC (e a permissão de uso, se houver).",
+  "status": "OFICIAL",
+  "fonte": "FELDER, Richard M.; SOLOMAN, Barbara A. Índice de Estilos de Aprendizagem. North Carolina State University. Versão em português reproduzida como Anexo II em: LOPES, Wilma Maria Guimarães. ILS – Inventário de Estilos de Aprendizagem de Felder-Saloman: investigação de sua validade em estudantes universitários de Belo Horizonte. Florianópolis: UFSC, Programa de Pós-Graduação em Engenharia de Produção, 2002, com atualização ortográfica conforme o Acordo Ortográfico de 1990 (apenas acentuação e trema).",
   "observacao": "Mude status para OFICIAL depois de preencher os 44 itens. Itens 1,5,9,... = ativo/reflexivo; 2,6,10,... = sensorial/intuitivo; 3,7,11,... = visual/verbal; 4,8,12,... = sequencial/global. A alternativa (a) é sempre a do primeiro polo.",
   "itens": [
     {
       "item": 1,
-      "enunciado": "[Item 1 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 1, alternativa (a)]",
-      "b": "[Item 1, alternativa (b)]"
+      "enunciado": "Eu compreendo melhor alguma coisa depois de",
+      "a": "experimentar.",
+      "b": "refletir sobre ela."
     },
     {
       "item": 2,
-      "enunciado": "[Item 2 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 2, alternativa (a)]",
-      "b": "[Item 2, alternativa (b)]"
+      "enunciado": "Eu me considero",
+      "a": "realista.",
+      "b": "inovador(a)."
     },
     {
       "item": 3,
-      "enunciado": "[Item 3 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 3, alternativa (a)]",
-      "b": "[Item 3, alternativa (b)]"
+      "enunciado": "Quando eu penso sobre o que fiz ontem, é mais provável que aflorem",
+      "a": "figuras.",
+      "b": "palavras."
     },
     {
       "item": 4,
-      "enunciado": "[Item 4 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 4, alternativa (a)]",
-      "b": "[Item 4, alternativa (b)]"
+      "enunciado": "Eu tendo a",
+      "a": "compreender os detalhes de um assunto, mas a estrutura geral pode ficar imprecisa.",
+      "b": "compreender a estrutura geral de um assunto, mas os detalhes podem ficar imprecisos."
     },
     {
       "item": 5,
-      "enunciado": "[Item 5 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 5, alternativa (a)]",
-      "b": "[Item 5, alternativa (b)]"
+      "enunciado": "Quando estou aprendendo algum assunto novo, me ajuda",
+      "a": "falar sobre ele.",
+      "b": "refletir sobre ele."
     },
     {
       "item": 6,
-      "enunciado": "[Item 6 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 6, alternativa (a)]",
-      "b": "[Item 6, alternativa (b)]"
+      "enunciado": "Se eu fosse um professor, eu preferiria ensinar uma disciplina",
+      "a": "que trate com fatos e situações reais.",
+      "b": "que trate com ideias e teorias."
     },
     {
       "item": 7,
-      "enunciado": "[Item 7 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 7, alternativa (a)]",
-      "b": "[Item 7, alternativa (b)]"
+      "enunciado": "Eu prefiro obter novas informações através de",
+      "a": "figuras, diagramas, gráficos ou mapas.",
+      "b": "instruções escritas ou informações verbais."
     },
     {
       "item": 8,
-      "enunciado": "[Item 8 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 8, alternativa (a)]",
-      "b": "[Item 8, alternativa (b)]"
+      "enunciado": "Quando eu compreendo",
+      "a": "todas as partes, consigo entender o todo.",
+      "b": "o todo, consigo ver como as partes se encaixam."
     },
     {
       "item": 9,
-      "enunciado": "[Item 9 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 9, alternativa (a)]",
-      "b": "[Item 9, alternativa (b)]"
+      "enunciado": "Em um grupo de estudo, trabalhando um material difícil, eu provavelmente",
+      "a": "tomo a iniciativa e contribuo com ideias.",
+      "b": "assumo uma posição discreta e escuto."
     },
     {
       "item": 10,
-      "enunciado": "[Item 10 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 10, alternativa (a)]",
-      "b": "[Item 10, alternativa (b)]"
+      "enunciado": "Acho mais fácil",
+      "a": "aprender fatos.",
+      "b": "aprender conceitos."
     },
     {
       "item": 11,
-      "enunciado": "[Item 11 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 11, alternativa (a)]",
-      "b": "[Item 11, alternativa (b)]"
+      "enunciado": "Em um livro com uma porção de figuras e desenhos, eu provavelmente",
+      "a": "observo as figuras e desenhos cuidadosamente.",
+      "b": "atento para o texto escrito."
     },
     {
       "item": 12,
-      "enunciado": "[Item 12 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 12, alternativa (a)]",
-      "b": "[Item 12, alternativa (b)]"
+      "enunciado": "Quando resolvo problemas de matemática, eu",
+      "a": "usualmente trabalho de maneira a resolver uma etapa de cada vez.",
+      "b": "frequentemente antevejo as soluções, mas tenho que me esforçar muito para conceber as etapas para chegar a elas."
     },
     {
       "item": 13,
-      "enunciado": "[Item 13 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 13, alternativa (a)]",
-      "b": "[Item 13, alternativa (b)]"
+      "enunciado": "Nas disciplinas que cursei eu",
+      "a": "em geral fiz amizade com muitos dos colegas.",
+      "b": "raramente fiz amizade com muitos dos colegas."
     },
     {
       "item": 14,
-      "enunciado": "[Item 14 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 14, alternativa (a)]",
-      "b": "[Item 14, alternativa (b)]"
+      "enunciado": "Em literatura de não-ficção, eu prefiro",
+      "a": "algo que me ensine fatos novos ou me indique como fazer alguma coisa.",
+      "b": "algo que me apresente novas ideias para pensar."
     },
     {
       "item": 15,
-      "enunciado": "[Item 15 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 15, alternativa (a)]",
-      "b": "[Item 15, alternativa (b)]"
+      "enunciado": "Eu gosto de professores",
+      "a": "que colocam uma porção de diagramas no quadro.",
+      "b": "que gastam bastante tempo explicando."
     },
     {
       "item": 16,
-      "enunciado": "[Item 16 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 16, alternativa (a)]",
-      "b": "[Item 16, alternativa (b)]"
+      "enunciado": "Quando estou analisando uma estória ou novela eu",
+      "a": "penso nos incidentes e tento colocá-los juntos para identificar os temas.",
+      "b": "tenho consciência dos temas quando termino a leitura e então tenho que voltar atrás para encontrar os incidentes que os confirmem."
     },
     {
       "item": 17,
-      "enunciado": "[Item 17 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 17, alternativa (a)]",
-      "b": "[Item 17, alternativa (b)]"
+      "enunciado": "Quando inicio a resolução de um problema para casa, normalmente eu",
+      "a": "começo a trabalhar imediatamente na solução.",
+      "b": "primeiro tento compreender completamente o problema."
     },
     {
       "item": 18,
-      "enunciado": "[Item 18 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 18, alternativa (a)]",
-      "b": "[Item 18, alternativa (b)]"
+      "enunciado": "Prefiro a ideia do",
+      "a": "certo.",
+      "b": "teórico."
     },
     {
       "item": 19,
-      "enunciado": "[Item 19 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 19, alternativa (a)]",
-      "b": "[Item 19, alternativa (b)]"
+      "enunciado": "Relembro melhor",
+      "a": "o que vejo.",
+      "b": "o que ouço."
     },
     {
       "item": 20,
-      "enunciado": "[Item 20 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 20, alternativa (a)]",
-      "b": "[Item 20, alternativa (b)]"
+      "enunciado": "É mais importante para mim que o professor",
+      "a": "apresente a matéria em etapas sequenciais claras.",
+      "b": "apresente um quadro geral e relacione a matéria com outros assuntos."
     },
     {
       "item": 21,
-      "enunciado": "[Item 21 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 21, alternativa (a)]",
-      "b": "[Item 21, alternativa (b)]"
+      "enunciado": "Eu prefiro estudar",
+      "a": "em grupo.",
+      "b": "sozinho(a)."
     },
     {
       "item": 22,
-      "enunciado": "[Item 22 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 22, alternativa (a)]",
-      "b": "[Item 22, alternativa (b)]"
+      "enunciado": "Eu costumo ser considerado(a)",
+      "a": "cuidadoso(a) com os detalhes do meu trabalho.",
+      "b": "criativo(a) na maneira de realizar meu trabalho."
     },
     {
       "item": 23,
-      "enunciado": "[Item 23 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 23, alternativa (a)]",
-      "b": "[Item 23, alternativa (b)]"
+      "enunciado": "Quando busco orientação para chegar a um lugar desconhecido, eu prefiro",
+      "a": "um mapa.",
+      "b": "instruções por escrito."
     },
     {
       "item": 24,
-      "enunciado": "[Item 24 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 24, alternativa (a)]",
-      "b": "[Item 24, alternativa (b)]"
+      "enunciado": "Eu aprendo",
+      "a": "num ritmo bastante regular. Se estudar pesado, eu \"chego lá\".",
+      "b": "em saltos. Fico totalmente confuso(a) por algum tempo e, então, repentinamente eu tenho um \"estalo\"."
     },
     {
       "item": 25,
-      "enunciado": "[Item 25 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 25, alternativa (a)]",
-      "b": "[Item 25, alternativa (b)]"
+      "enunciado": "Eu prefiro primeiro",
+      "a": "experimentar as coisas.",
+      "b": "pensar sobre como é que eu vou fazer."
     },
     {
       "item": 26,
-      "enunciado": "[Item 26 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 26, alternativa (a)]",
-      "b": "[Item 26, alternativa (b)]"
+      "enunciado": "Quando estou lendo como lazer, eu prefiro escritores que",
+      "a": "explicitem claramente o que querem dizer.",
+      "b": "dizem as coisas de maneira criativa, interessante."
     },
     {
       "item": 27,
-      "enunciado": "[Item 27 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 27, alternativa (a)]",
-      "b": "[Item 27, alternativa (b)]"
+      "enunciado": "Quando vejo um diagrama ou esquema em uma aula, relembro mais facilmente",
+      "a": "a figura.",
+      "b": "o que o(a) professor(a) disse a respeito dela."
     },
     {
       "item": 28,
-      "enunciado": "[Item 28 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 28, alternativa (a)]",
-      "b": "[Item 28, alternativa (b)]"
+      "enunciado": "Quando considero um conjunto de informações, provavelmente eu",
+      "a": "presto mais atenção nos detalhes e não percebo o quadro geral.",
+      "b": "procuro compreender o quadro geral antes de atentar para os detalhes."
     },
     {
       "item": 29,
-      "enunciado": "[Item 29 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 29, alternativa (a)]",
-      "b": "[Item 29, alternativa (b)]"
+      "enunciado": "Relembro mais facilmente",
+      "a": "algo que fiz.",
+      "b": "algo sobre o que pensei bastante."
     },
     {
       "item": 30,
-      "enunciado": "[Item 30 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 30, alternativa (a)]",
-      "b": "[Item 30, alternativa (b)]"
+      "enunciado": "Quando tenho uma tarefa para executar, eu prefiro",
+      "a": "dominar uma maneira para a execução da tarefa.",
+      "b": "encontrar novas maneiras para a execução da tarefa."
     },
     {
       "item": 31,
-      "enunciado": "[Item 31 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 31, alternativa (a)]",
-      "b": "[Item 31, alternativa (b)]"
+      "enunciado": "Quando alguém está me mostrando dados, eu prefiro",
+      "a": "diagramas e gráficos.",
+      "b": "texto sumarizando os resultados."
     },
     {
       "item": 32,
-      "enunciado": "[Item 32 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 32, alternativa (a)]",
-      "b": "[Item 32, alternativa (b)]"
+      "enunciado": "Quando escrevo um texto, eu prefiro trabalhar (pensar a respeito ou escrever)",
+      "a": "a parte inicial do texto e avançar ordenadamente.",
+      "b": "diferentes partes do texto e ordená-las depois."
     },
     {
       "item": 33,
-      "enunciado": "[Item 33 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 33, alternativa (a)]",
-      "b": "[Item 33, alternativa (b)]"
+      "enunciado": "Quando tenho que trabalhar em um projeto em grupo, eu prefiro que se faça primeiro",
+      "a": "um debate (brainstorming) em grupo, onde todos contribuem com ideias.",
+      "b": "um brainstorming individual, seguido de reunião do grupo para comparar ideias."
     },
     {
       "item": 34,
-      "enunciado": "[Item 34 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 34, alternativa (a)]",
-      "b": "[Item 34, alternativa (b)]"
+      "enunciado": "Considero um elogio chamar alguém de",
+      "a": "sensível.",
+      "b": "imaginativo."
     },
     {
       "item": 35,
-      "enunciado": "[Item 35 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 35, alternativa (a)]",
-      "b": "[Item 35, alternativa (b)]"
+      "enunciado": "Das pessoas que conheço em uma festa, provavelmente eu me recordo melhor",
+      "a": "de sua aparência.",
+      "b": "do que elas disseram de si mesmas."
     },
     {
       "item": 36,
-      "enunciado": "[Item 36 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 36, alternativa (a)]",
-      "b": "[Item 36, alternativa (b)]"
+      "enunciado": "Quando estou aprendendo um assunto novo, eu prefiro",
+      "a": "concentrar-me no assunto, aprendendo o máximo possível.",
+      "b": "tentar estabelecer conexões entre o assunto e outros com ele relacionados."
     },
     {
       "item": 37,
-      "enunciado": "[Item 37 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 37, alternativa (a)]",
-      "b": "[Item 37, alternativa (b)]"
+      "enunciado": "Mais provavelmente sou considerado(a)",
+      "a": "expansivo(a).",
+      "b": "reservado(a)."
     },
     {
       "item": 38,
-      "enunciado": "[Item 38 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 38, alternativa (a)]",
-      "b": "[Item 38, alternativa (b)]"
+      "enunciado": "Prefiro disciplinas que enfatizam",
+      "a": "material concreto (fatos, dados).",
+      "b": "material abstrato (conceitos, teorias)."
     },
     {
       "item": 39,
-      "enunciado": "[Item 39 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 39, alternativa (a)]",
-      "b": "[Item 39, alternativa (b)]"
+      "enunciado": "Para entretenimento, eu prefiro",
+      "a": "assistir televisão.",
+      "b": "ler um livro."
     },
     {
       "item": 40,
-      "enunciado": "[Item 40 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 40, alternativa (a)]",
-      "b": "[Item 40, alternativa (b)]"
+      "enunciado": "Alguns professores iniciam suas preleções com um resumo do que irão cobrir. Tais resumos são",
+      "a": "de alguma utilidade para mim.",
+      "b": "muito úteis para mim."
     },
     {
       "item": 41,
-      "enunciado": "[Item 41 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 41, alternativa (a)]",
-      "b": "[Item 41, alternativa (b)]"
+      "enunciado": "A ideia de fazer o trabalho de casa em grupo, com a mesma nota para todos do grupo,",
+      "a": "me agrada.",
+      "b": "não me agrada."
     },
     {
       "item": 42,
-      "enunciado": "[Item 42 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 42, alternativa (a)]",
-      "b": "[Item 42, alternativa (b)]"
+      "enunciado": "Quando estou fazendo cálculos longos,",
+      "a": "tendo a repetir todos os passos e conferir meu trabalho cuidadosamente.",
+      "b": "acho cansativo conferir o meu trabalho e tenho que me esforçar para fazê-lo."
     },
     {
       "item": 43,
-      "enunciado": "[Item 43 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 43, alternativa (a)]",
-      "b": "[Item 43, alternativa (b)]"
+      "enunciado": "Tendo a descrever os lugares onde estive",
+      "a": "com facilidade e com bom detalhamento.",
+      "b": "com dificuldade e sem detalhamento."
     },
     {
       "item": 44,
-      "enunciado": "[Item 44 do ILS: preencher com o enunciado da versão em português adotada]",
-      "a": "[Item 44, alternativa (a)]",
-      "b": "[Item 44, alternativa (b)]"
+      "enunciado": "Quando estou resolvendo problemas em grupo, mais provavelmente eu",
+      "a": "penso nas etapas do processo de solução.",
+      "b": "penso nas possíveis consequências, ou sobre as aplicações da solução para uma ampla faixa de áreas."
     }
   ]
 }

@@ -114,3 +114,23 @@ TCC). Desenvolvimento e testes em SQLite; produção em PostgreSQL pela variáve
   não para restringir o conteúdo que cada aluno recebe.
 - Sem resposta certa ou errada, não há botão "Responder": tocar na
   alternativa envia (depois do círculo de caneta se desenhar).
+
+### P10.1 — Textos do ILS: tradução de Lopes (2002)
+- Versão em português: Anexo II de LOPES, W. M. G. *ILS – Inventário de Estilos
+  de Aprendizagem de Felder-Saloman: investigação de sua validade em estudantes
+  universitários de Belo Horizonte*. Dissertação (Mestrado), UFSC, 2002. É a
+  tradução brasileira mais citada e tem os 44 itens na ordem original.
+- Conferência: os 44 itens do `itens.json` foram comparados com o texto do
+  Anexo II (enunciado, alternativas e ordem). Também foi conferido que, em todos
+  os itens, a alternativa (a) corresponde ao primeiro polo da dimensão (ativo,
+  sensorial, visual, sequencial), condição para o escore e para a calibração
+  da IA, que é feita por número de item.
+- Atualização ortográfica (Acordo de 1990), apenas acentuação e trema
+  (ideia, frequentemente, sequenciais, consequências), porque o público é do
+  9º ano. Nenhuma palavra foi trocada.
+- Limitação: no próprio estudo de Lopes (2002), com universitários, a análise
+  fatorial encontrou cargas satisfatórias em 28 dos 44 itens, e só a dimensão
+  visual/verbal ficou bem formada; a autora recomenda revisão semântica. Somada
+  à calibração com estatísticas de universitários dos EUA (Litzinger et al.,
+  2005) e ao público do 9º ano, isso é declarado como limitação do trabalho.
+- O PDF da fonte fica fora do repositório (`docs/fontes/` no `.gitignore`).

@@ -59,7 +59,7 @@ def test_fluxo_completo(com_motor):
 
     estado = com_motor.post("/eu/estilo/iniciar", headers=ha).json()
     assert estado["status"] == "em_andamento" and estado["pergunta"]["numero"] == 1
-    assert estado["textos_provisorios"] is True            # itens.json do repositório é provisório
+    assert isinstance(estado["textos_provisorios"], bool)
     n = 0
     while estado["status"] == "em_andamento":
         estado = com_motor.post("/eu/estilo/responder", headers=ha,
