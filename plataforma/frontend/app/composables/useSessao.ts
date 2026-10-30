@@ -41,6 +41,7 @@ export function useSessao() {
     definir(null)
     usuario.value = null
     clearNuxtData() // descarta dados carregados da conta anterior
+    clearNuxtState(['adesivos-conhecidos', 'adesivo-novo'])
     return navigateTo('/entrar')
   }
 

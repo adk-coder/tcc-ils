@@ -1,14 +1,14 @@
 <!-- Ícones simples em traço (desenhados como à caneta). -->
 <script setup lang="ts">
 withDefaults(defineProps<{
-  nome: 'inicio' | 'salas' | 'conta' | 'sair' | 'voltar' | 'mais' | 'lapis' | 'lixo' | 'certo' | 'trofeu' | 'livro' | 'estilo' | 'grafico'
-  tamanho?: 'p' | 'm'
+  nome: 'inicio' | 'salas' | 'conta' | 'sair' | 'voltar' | 'mais' | 'lapis' | 'lixo' | 'certo' | 'trofeu' | 'livro' | 'estilo' | 'grafico' | 'adesivo' | 'refazer'
+  tamanho?: 'p' | 'm' | 'g'
 }>(), { tamanho: 'm' })
 </script>
 
 <template>
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-       stroke-linejoin="round" :class="tamanho === 'p' ? 'size-4' : 'size-6'" aria-hidden="true">
+       stroke-linejoin="round" :class="tamanho === 'p' ? 'size-4' : tamanho === 'g' ? 'size-9' : 'size-6'" aria-hidden="true">
     <template v-if="nome === 'inicio'">
       <path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1z" />
     </template>
@@ -40,6 +40,12 @@ withDefaults(defineProps<{
     <template v-else-if="nome === 'trofeu'">
       <path d="M8 4h8v5a4 4 0 0 1-8 0z" /><path d="M8 6H5a3 3 0 0 0 3 4" /><path d="M16 6h3a3 3 0 0 1-3 4" />
       <path d="M12 13v4" /><path d="M8.5 20h7" />
+    </template>
+    <template v-else-if="nome === 'adesivo'">
+      <path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z" />
+    </template>
+    <template v-else-if="nome === 'refazer'">
+      <path d="M4 12a8 8 0 1 0 2.4-5.7" /><path d="M4 4v4h4" />
     </template>
     <template v-else-if="nome === 'grafico'">
       <path d="M4 20h16" /><path d="M7 16v-5" /><path d="M12 16V7" /><path d="M17 16v-8" />

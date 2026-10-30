@@ -147,3 +147,14 @@ export interface Continuar {
   feitos: number
   total: number
 }
+
+// ------------------------------------------------------------ adesivos de conquista
+export interface Adesivo {
+  id: string
+  titulo: string
+  descricao: string      // como ganhar
+  meta: number
+  progresso: number      // 0..meta
+  ganho: boolean
+  ganho_em: string | null
+}

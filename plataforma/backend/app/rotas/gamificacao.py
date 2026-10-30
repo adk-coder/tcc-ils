@@ -1,4 +1,5 @@
-"""Progresso do aluno (pontos e streak) e ranking da sala. Regras em app/gamificacao.py."""
+"""Progresso do aluno (pontos e streak), adesivos de conquista e ranking da sala.
+Regras em app/gamificacao.py e app/conquistas.py."""
 
 from datetime import datetime
 
@@ -8,9 +9,10 @@ from sqlmodel import Session, select
 
 from ..db import get_session
 from ..deps import exigir_aluno, usuario_atual
-from ..esquemas import LinhaRanking, Progresso
+from ..conquistas import RespostaSimples, calcular_conquistas
+from ..esquemas import Adesivo, LinhaRanking, Progresso
 from ..gamificacao import FUSO, calcular_streak, nome_curto
-from ..modelos import Exercicio, Matricula, Modulo, Resposta, Usuario
+from ..modelos import Exercicio, Matricula, Modulo, QuestionarioEstilo, Resposta, Usuario
 from .salas import sala_visivel
 
 router = APIRouter(tags=["gamificação"])
@@ -45,3 +47,19 @@ def ranking(sala_id: int, usuario: Usuario = Depends(usuario_atual), sessao: Ses
                          nome=a.nome if eh_professor else nome_curto(a.nome),
                          pontos=pontos_por_aluno.get(a.id) or 0, sou_eu=a.id == usuario.id)
             for i, a in enumerate(ordenados, start=1)]
+
+
+@router.get("/eu/conquistas", response_model=list[Adesivo])
+def minhas_conquistas(aluno: Usuario = Depends(exigir_aluno), sessao: Session = Depends(get_session)):
+    respostas = [RespostaSimples(r.exercicio_id, r.correta, r.pontos_ganhos, r.respondida_em)
+                 for r in sessao.exec(select(Resposta).where(Resposta.aluno_id == aluno.id)).all()]
+    # módulos das salas em que o aluno está agora → {módulo: {exercícios}}
+    linhas = sessao.exec(select(Exercicio.modulo_id, Exercicio.id)
+                         .join(Modulo, Modulo.id == Exercicio.modulo_id)
+                         .join(Matricula, Matricula.sala_id == Modulo.sala_id)
+                         .where(Matricula.aluno_id == aluno.id)).all()
+    modulos: dict[int, set[int]] = {}
+    for modulo_id, exercicio_id in linhas:
+        modulos.setdefault(modulo_id, set()).add(exercicio_id)
+    estilo = sessao.exec(select(QuestionarioEstilo).where(QuestionarioEstilo.aluno_id == aluno.id)).first()
+    return calcular_conquistas(respostas, modulos, estilo.concluido_em if estilo else None)

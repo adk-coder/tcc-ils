@@ -250,3 +250,14 @@ class Continuar(BaseModel):
     modulo_titulo: str
     feitos: int                # exercícios já acertados no módulo
     total: int
+
+
+# ---------------------------------------------------------------- adesivos de conquista
+class Adesivo(BaseModel):
+    id: str
+    titulo: str
+    descricao: str             # como ganhar
+    meta: int
+    progresso: int             # 0..meta
+    ganho: bool
+    ganho_em: datetime | None = None

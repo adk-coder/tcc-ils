@@ -1,6 +1,6 @@
 <!-- Início: o que fazer agora. Aluno vê o próprio progresso; professor vê as salas. -->
 <script setup lang="ts">
-import type { Continuar, EstadoEstilo, Progresso, Sala } from '~/utils/tipos'
+import type { Adesivo, Continuar, EstadoEstilo, Progresso, Sala } from '~/utils/tipos'
 import { POLOS } from '~/utils/estilos'
 
 useHead({ title: 'Início — MatIF' })
@@ -11,6 +11,11 @@ const professor = sessao.ehProfessor
 const { data: salas, refresh } = await useAsyncData('inicio-salas', () => api<Sala[]>('/salas'), { default: () => [] })
 const { data: progresso } = await useAsyncData('inicio-progresso',
   () => (professor.value ? Promise.resolve(null) : api<Progresso>('/eu/progresso')))
+// adesivos (só para mostrar a faixa; o aviso de "novo" fica nas telas de exercício e estilo)
+const { data: adesivos } = await useAsyncData('inicio-adesivos',
+  () => (professor.value ? Promise.resolve(null) : api<Adesivo[]>('/eu/conquistas').catch(() => null)))
+const adesivosGanhos = computed(() => (adesivos.value ?? []).filter(a => a.ganho))
+
 // próximo módulo a estudar (null = em dia ou sem salas)
 const { data: continuar } = await useAsyncData('inicio-continuar',
   () => (professor.value ? Promise.resolve(null) : api<Continuar | null>('/eu/continuar').catch(() => null)))
@@ -43,6 +48,20 @@ const { data: estilo } = await useAsyncData('inicio-estilo',
         <p class="mt-1 text-sm text-tinta-suave">exercícios certos</p>
       </div>
     </section>
+
+    <!-- adesivos -->
+    <NuxtLink v-if="!professor && adesivos?.length" to="/adesivos"
+              class="folha flex items-center gap-4 p-4 text-tinta no-underline transition-colors hover:border-caneta sm:px-5">
+      <span class="flex -space-x-3">
+        <Adesivo v-for="(a, i) in adesivosGanhos.slice(-4)" :key="a.id" :adesivo="a" :indice="i" pequeno />
+        <Adesivo v-if="!adesivosGanhos.length" :adesivo="adesivos[0]!" pequeno />
+      </span>
+      <span class="min-w-0 flex-1 text-sm">
+        <strong class="font-display text-base">{{ adesivosGanhos.length }} de {{ adesivos.length }} adesivos</strong>
+        <span class="block text-tinta-suave">{{ adesivosGanhos.length ? 'Veja o seu caderno de conquistas' : 'Acerte um exercício para ganhar o primeiro' }}</span>
+      </span>
+      <Icone nome="adesivo" class="shrink-0 text-caneta" />
+    </NuxtLink>
 
     <!-- continuar de onde parou -->
     <section v-if="!professor && continuar" class="folha-caderno flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"

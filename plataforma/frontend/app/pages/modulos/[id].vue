@@ -23,13 +23,18 @@ const concluido = computed(() => !professor.value && total.value > 0 && acertado
 const paragrafos = computed(() =>
   (modulo.value?.conteudo ?? '').split(/\n\s*\n/).map(p => p.trim()).filter(Boolean))
 
+// adesivos: a 1ª consulta serve de referência; depois de cada resposta, verifica se ganhou um novo
+const { verificar } = useConquistas()
+onMounted(() => { if (!professor.value) verificar() })
+
 // aluno respondeu: atualiza a barra de progresso sem recarregar a página e descarta
 // os dados guardados que ficaram velhos (progresso na sala, ranking e pontos do início),
 // para que sejam buscados de novo na API quando o aluno voltar para essas telas
 function registrar(exercicio: ExercicioAluno, r: RespostaSaida) {
   exercicio.ja_respondeu = true
   if (r.correta) exercicio.ja_acertou = true
-  clearNuxtData(chave => chave.startsWith('modulos-') || chave.startsWith('ranking-') || chave === 'inicio-progresso' || chave === 'inicio-continuar' || chave.startsWith('desempenho-'))
+  verificar()
+  clearNuxtData(chave => chave.startsWith('modulos-') || chave.startsWith('ranking-') || chave === 'inicio-progresso' || chave === 'inicio-continuar' || chave === 'inicio-adesivos' || chave.startsWith('desempenho-'))
 }
 
 // ---- professor

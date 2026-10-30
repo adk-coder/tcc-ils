@@ -180,6 +180,22 @@ TCC). Desenvolvimento e testes em SQLite; produção em PostgreSQL pela variáve
   ainda faltar exercício; senão o próximo da mesma sala; senão qualquer módulo
   com exercício pendente. Sem pendências, o início diz que o aluno está em dia.
 
+## P14 — Adesivos de conquista (gamificação)
+- 8 adesivos, como figurinhas coladas no caderno (mesma identidade visual):
+  primeiro acerto, 5 acertos de primeira, 10 exercícios diferentes, acertar um
+  exercício que tinha errado ("Não desisto"), concluir um módulo, 3 e 7 dias
+  seguidos, e descobrir o estilo de aprendizagem.
+- Por quê: pontos e ranking já existiam, mas o ranking COMPARA alunos e pode
+  desmotivar quem fica nas últimas posições. Os adesivos premiam o progresso de
+  cada aluno contra si mesmo, inclusive a persistência (errar e tentar de novo),
+  e não só o desempenho.
+- Calculados na hora a partir das respostas (função pura `app/conquistas.py`,
+  testada), sem tabela nova: nenhum dado pessoal novo é guardado (LGPD), e uma
+  mudança de regra vale também para conquistas antigas.
+- Aviso "Novo adesivo!" ao ganhar (depois de responder um exercício ou concluir
+  o questionário). Os adesivos são só do aluno: não aparecem para colegas nem
+  para o professor.
+
 ## P13 — Publicação (Neon + Render, planos gratuitos)
 - Banco: PostgreSQL no Neon, região São Paulo (dados no Brasil; plano gratuito
   permanente, 1 GB). API e site: Render (plano gratuito), descritos em

@@ -4,11 +4,14 @@ const route = useRoute()
 const online = useState('online', () => true)
 const sessao = useSessao()
 
-// "Meu estilo" (questionário de estilos de aprendizagem) só aparece para alunos
+// "Adesivos" e "Meu estilo" só aparecem para alunos
 const itens = computed(() => [
   { para: '/', rotulo: 'Início', icone: 'inicio' as const },
   { para: '/salas', rotulo: 'Salas', icone: 'salas' as const },
-  ...(sessao.ehProfessor.value ? [] : [{ para: '/estilo', rotulo: 'Meu estilo', icone: 'estilo' as const }]),
+  ...(sessao.ehProfessor.value ? [] : [
+    { para: '/adesivos', rotulo: 'Adesivos', icone: 'adesivo' as const },
+    { para: '/estilo', rotulo: 'Meu estilo', icone: 'estilo' as const },
+  ]),
   { para: '/conta', rotulo: 'Conta', icone: 'conta' as const },
 ])
 
@@ -53,7 +56,7 @@ function ativo(para: string) {
 
     <!-- barra inferior (celular) -->
     <nav class="fixed inset-x-0 bottom-0 z-10 grid border-t border-linha bg-white pb-[env(safe-area-inset-bottom)] md:hidden"
-         :class="itens.length === 4 ? 'grid-cols-4' : 'grid-cols-3'" aria-label="Principal">
+         :class="itens.length === 5 ? 'grid-cols-5' : 'grid-cols-3'" aria-label="Principal">
       <NuxtLink
         v-for="item in itens" :key="item.para" :to="item.para"
         class="flex flex-col items-center gap-0.5 py-2.5 text-xs no-underline"
@@ -63,5 +66,8 @@ function ativo(para: string) {
         <Icone :nome="item.icone" /> {{ item.rotulo }}
       </NuxtLink>
     </nav>
+
+    <!-- "Novo adesivo!" (só alunos ganham adesivos) -->
+    <AvisoConquista v-if="!sessao.ehProfessor.value" />
   </div>
 </template>

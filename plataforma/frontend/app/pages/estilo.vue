@@ -13,6 +13,9 @@ if (sessao.ehProfessor.value) await navigateTo('/')
 const { data: estado, error, refresh } = await useAsyncData('estilo', () => api<EstadoEstilo>('/eu/estilo'))
 const indisponivel = computed(() => error.value?.statusCode === 503)
 
+const { verificar } = useConquistas()
+onMounted(() => verificar())          // referência para o aviso de adesivo novo
+
 const enviando = ref(false)
 const erro = ref('')
 const confirmarRefazer = ref(false)
@@ -42,7 +45,8 @@ async function responder(resposta: 'a' | 'b') {
       method: 'POST', body: { item: pergunta.item, resposta },
     })
     if (estado.value.status === 'concluido') {
-      clearNuxtData('inicio-estilo')
+      clearNuxtData(['inicio-estilo', 'inicio-adesivos'])
+      verificar()                     // ganhou o adesivo "Me conheço"
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   } catch (e) {
