@@ -1,0 +1,260 @@
+{
+  "duracao_segundos": 5566.5,
+  "lambda_escolhido": 0.025,
+  "meta_atingida_na_validacao": true,
+  "classificador": "experimentos\\2026-10-25_121909_classificador\\classificador.pt",
+  "validacao": {
+    "0.01": {
+      "por_dimensao": {
+        "ati_ref": {
+          "acuracia_polo": 0.9859,
+          "kappa_polo": 0.9719,
+          "media_questoes": 10.737
+        },
+        "sen_int": {
+          "acuracia_polo": 0.9901,
+          "kappa_polo": 0.9803,
+          "media_questoes": 10.713
+        },
+        "vis_ver": {
+          "acuracia_polo": 0.9874,
+          "kappa_polo": 0.9748,
+          "media_questoes": 10.761
+        },
+        "seq_glo": {
+          "acuracia_polo": 0.9942,
+          "kappa_polo": 0.9884,
+          "media_questoes": 10.911
+        }
+      },
+      "geral": {
+        "acuracia_polo_media": 0.9894,
+        "acuracia_polo_minima": 0.9859,
+        "todas_dimensoes_ge_90": true,
+        "media_questoes_total": 43.122,
+        "desvio_questoes_total": 1.598
+      }
+    },
+    "0.015": {
+      "por_dimensao": {
+        "ati_ref": {
+          "acuracia_polo": 0.9859,
+          "kappa_polo": 0.9717,
+          "media_questoes": 10.739
+        },
+        "sen_int": {
+          "acuracia_polo": 0.9811,
+          "kappa_polo": 0.9623,
+          "media_questoes": 10.42
+        },
+        "vis_ver": {
+          "acuracia_polo": 0.9838,
+          "kappa_polo": 0.9676,
+          "media_questoes": 10.548
+        },
+        "seq_glo": {
+          "acuracia_polo": 0.989,
+          "kappa_polo": 0.978,
+          "media_questoes": 10.836
+        }
+      },
+      "geral": {
+        "acuracia_polo_media": 0.9849,
+        "acuracia_polo_minima": 0.9811,
+        "todas_dimensoes_ge_90": true,
+        "media_questoes_total": 42.542,
+        "desvio_questoes_total": 1.963
+      }
+    },
+    "0.02": {
+      "por_dimensao": {
+        "ati_ref": {
+          "acuracia_polo": 0.9651,
+          "kappa_polo": 0.9303,
+          "media_questoes": 10.147
+        },
+        "sen_int": {
+          "acuracia_polo": 0.9704,
+          "kappa_polo": 0.9408,
+          "media_questoes": 9.648
+        },
+        "vis_ver": {
+          "acuracia_polo": 0.9695,
+          "kappa_polo": 0.939,
+          "media_questoes": 9.949
+        },
+        "seq_glo": {
+          "acuracia_polo": 0.9827,
+          "kappa_polo": 0.9653,
+          "media_questoes": 10.293
+        }
+      },
+      "geral": {
+        "acuracia_polo_media": 0.9719,
+        "acuracia_polo_minima": 0.9651,
+        "todas_dimensoes_ge_90": true,
+        "media_questoes_total": 40.037,
+        "desvio_questoes_total": 4.38
+      }
+    },
+    "0.025": {
+      "por_dimensao": {
+        "ati_ref": {
+          "acuracia_polo": 0.9508,
+          "kappa_polo": 0.9016,
+          "media_questoes": 9.381
+        },
+        "sen_int": {
+          "acuracia_polo": 0.9612,
+          "kappa_polo": 0.9224,
+          "media_questoes": 8.453
+        },
+        "vis_ver": {
+          "acuracia_polo": 0.9339,
+          "kappa_polo": 0.8676,
+          "media_questoes": 8.138
+        },
+        "seq_glo": {
+          "acuracia_polo": 0.9622,
+          "kappa_polo": 0.9244,
+          "media_questoes": 9.023
+        }
+      },
+      "geral": {
+        "acuracia_polo_media": 0.952,
+        "acuracia_polo_minima": 0.9339,
+        "todas_dimensoes_ge_90": true,
+        "media_questoes_total": 34.995,
+        "desvio_questoes_total": 8.029
+      }
+    },
+    "0.03": {
+      "por_dimensao": {
+        "ati_ref": {
+          "acuracia_polo": 0.8503,
+          "kappa_polo": 0.7004,
+          "media_questoes": 5.387
+        },
+        "sen_int": {
+          "acuracia_polo": 0.921,
+          "kappa_polo": 0.8419,
+          "media_questoes": 5.058
+        },
+        "vis_ver": {
+          "acuracia_polo": 0.8861,
+          "kappa_polo": 0.7721,
+          "media_questoes": 5.015
+        },
+        "seq_glo": {
+          "acuracia_polo": 0.9282,
+          "kappa_polo": 0.8564,
+          "media_questoes": 6.179
+        }
+      },
+      "geral": {
+        "acuracia_polo_media": 0.8964,
+        "acuracia_polo_minima": 0.8503,
+        "todas_dimensoes_ge_90": false,
+        "media_questoes_total": 21.639,
+        "desvio_questoes_total": 10.52
+      }
+    },
+    "0.04": {
+      "por_dimensao": {
+        "ati_ref": {
+          "acuracia_polo": 0.8112,
+          "kappa_polo": 0.6222,
+          "media_questoes": 3.557
+        },
+        "sen_int": {
+          "acuracia_polo": 0.8617,
+          "kappa_polo": 0.7234,
+          "media_questoes": 2.457
+        },
+        "vis_ver": {
+          "acuracia_polo": 0.8751,
+          "kappa_polo": 0.7501,
+          "media_questoes": 3.323
+        },
+        "seq_glo": {
+          "acuracia_polo": 0.8141,
+          "kappa_polo": 0.6281,
+          "media_questoes": 2.972
+        }
+      },
+      "geral": {
+        "acuracia_polo_media": 0.8405,
+        "acuracia_polo_minima": 0.8112,
+        "todas_dimensoes_ge_90": false,
+        "media_questoes_total": 12.309,
+        "desvio_questoes_total": 3.748
+      }
+    }
+  },
+  "gulosa": {
+    "limiar_escolhido": 0.86,
+    "meta_atingida_na_validacao": true,
+    "teste": {
+      "por_dimensao": {
+        "ati_ref": {
+          "acuracia_polo": 0.9204,
+          "kappa_polo": 0.8407,
+          "media_questoes": 4.81
+        },
+        "sen_int": {
+          "acuracia_polo": 0.8995,
+          "kappa_polo": 0.7991,
+          "media_questoes": 2.289
+        },
+        "vis_ver": {
+          "acuracia_polo": 0.9191,
+          "kappa_polo": 0.8383,
+          "media_questoes": 3.098
+        },
+        "seq_glo": {
+          "acuracia_polo": 0.9101,
+          "kappa_polo": 0.8201,
+          "media_questoes": 4.174
+        }
+      },
+      "geral": {
+        "acuracia_polo_media": 0.9123,
+        "acuracia_polo_minima": 0.8995,
+        "todas_dimensoes_ge_90": false,
+        "media_questoes_total": 14.371,
+        "desvio_questoes_total": 5.084
+      }
+    }
+  },
+  "teste": {
+    "por_dimensao": {
+      "ati_ref": {
+        "acuracia_polo": 0.9514,
+        "kappa_polo": 0.9028,
+        "media_questoes": 9.406
+      },
+      "sen_int": {
+        "acuracia_polo": 0.9599,
+        "kappa_polo": 0.9197,
+        "media_questoes": 8.493
+      },
+      "vis_ver": {
+        "acuracia_polo": 0.9371,
+        "kappa_polo": 0.8742,
+        "media_questoes": 8.167
+      },
+      "seq_glo": {
+        "acuracia_polo": 0.9619,
+        "kappa_polo": 0.9239,
+        "media_questoes": 9.057
+      }
+    },
+    "geral": {
+      "acuracia_polo_media": 0.9526,
+      "acuracia_polo_minima": 0.9371,
+      "todas_dimensoes_ge_90": true,
+      "media_questoes_total": 35.123,
+      "desvio_questoes_total": 8.032
+    }
+  }
+}

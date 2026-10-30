@@ -24,3 +24,6 @@ dist/
 # Segredos (LGPD: nunca versionar credenciais)
 .env
 *.env
+
+# Banco SQLite de desenvolvimento
+*.db
