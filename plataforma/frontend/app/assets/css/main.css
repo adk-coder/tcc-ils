@@ -1,0 +1,63 @@
+/* Design system do MatIF: "caderno de matemática".
+   Papel quadriculado, tinta azul-escura, caneta azul e marca-texto amarelo. */
+@import "tailwindcss";
+
+@theme {
+  --color-papel: #F7F9FC;        /* fundo: papel (branco frio) */
+  --color-linha: #DCE6F2;        /* linhas do quadriculado e bordas */
+  --color-tinta: #1B2A41;        /* texto principal */
+  --color-tinta-suave: #4A5A73;  /* texto secundário */
+  --color-caneta: #2B59C3;       /* ações principais e links */
+  --color-caneta-escura: #1F4396;
+  --color-marca: #F5D90A;        /* marca-texto: pontos, streak, destaques */
+  --color-acerto: #1E9E6A;
+  --color-erro: #D64545;
+
+  --font-sans: "Lexend", system-ui, sans-serif;                       /* texto */
+  --font-display: "Bricolage Grotesque", "Lexend", system-ui, sans-serif; /* títulos e números */
+
+  --radius-folha: 10px;
+}
+
+@layer base {
+  html { color-scheme: light; }
+  body {
+    @apply bg-papel text-tinta font-sans antialiased;
+    line-height: 1.55;
+  }
+  h1, h2, h3 { @apply font-display text-tinta; line-height: 1.15; }
+  a { @apply text-caneta; }
+  :focus-visible {
+    outline: 3px solid var(--color-caneta);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  /* Fundo de caderno quadriculado (quadrados de 24 px) */
+  .papel-quadriculado {
+    background-color: var(--color-papel);
+    background-image:
+      linear-gradient(var(--color-linha) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-linha) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* "Folha" branca sobre o caderno */
+  .folha {
+    background: #fff;
+    border: 1px solid var(--color-linha);
+    border-radius: var(--radius-folha);
+  }
+
+  /* Traço de marca-texto atrás de números e destaques */
+  .marca-texto {
+    background: linear-gradient(transparent 55%, color-mix(in srgb, var(--color-marca) 85%, transparent) 55%);
+    padding: 0 0.12em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

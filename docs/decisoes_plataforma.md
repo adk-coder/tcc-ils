@@ -35,15 +35,39 @@ SQLModel com `create_all` (sem ferramenta de migração, suficiente para o escop
 TCC). Desenvolvimento e testes em SQLite; produção em PostgreSQL pela variável
 `DATABASE_URL`. Testes automáticos usam SQLite em memória, um banco novo por teste.
 
-## P6 — Gamificação
-- Pontos: cada exercício vale `pontos` (padrão 10), ganhos só se a PRIMEIRA tentativa
-  do aluno estiver certa. Tentar de novo não rende pontos — senão bastaria errar de
-  propósito, ver a resposta e acertar em seguida.
-- Streak: número de dias seguidos em que o aluno respondeu pelo menos um exercício,
-  contados no fuso de Brasília (`ZoneInfo("America/Sao_Paulo")`). A sequência ainda
-  está viva se o último dia de atividade foi hoje ou ontem.
-- Ranking: por sala, soma dos pontos dos exercícios dos módulos daquela sala; empate
-  desfeito por ordem alfabética. Para os colegas, o nome aparece abreviado ("Ana L.");
-  o professor vê o nome completo. O aluno não sabe o `id` dos colegas.
-- Todas as regras estão em `gamificacao.py` como funções puras (fáceis de testar e
-  de documentar no texto do TCC).
+## P6 — Módulos e exercícios
+- Módulo pertence a uma sala: texto de estudo + lista de exercícios. O professor
+  monta o conteúdo da própria turma (reaproveitar módulos entre salas fica para
+  trabalhos futuros).
+- Exercícios de múltipla escolha (2 a 5 alternativas): correção automática e
+  imediata, sem ambiguidade de formato numérico.
+- O aluno nunca recebe a alternativa correta antes de responder; depois de
+  responder recebe correção + explicação (feedback imediato).
+
+## P7 — Gamificação (regras em `app/gamificacao.py`, funções puras e testadas)
+- Pontos: só se a PRIMEIRA tentativa no exercício estiver certa. Como a resposta
+  é revelada após a 1ª tentativa, pontuar tentativas seguintes premiaria errar de
+  propósito. Refazer é permitido (aprendizagem), mas não pontua.
+- Streak: dias seguidos com pelo menos uma resposta, no fuso de Brasília; a
+  sequência continua viva se a última atividade foi hoje ou ontem.
+- Ranking por sala: soma dos pontos nos módulos da sala; empate em ordem alfabética.
+  Alunos veem os colegas como "Ana S." (minimização, LGPD); o professor vê o nome
+  completo. Todos os matriculados aparecem, inclusive com 0 pontos.
+- Exclusão de conta apaga também as respostas; a exportação de dados as inclui.
+
+## P8 — Frontend: Nuxt 4, SPA, design "caderno"
+- Nuxt 4 em vez do Nuxt 3 do projeto: o Nuxt 3 chegou ao fim do suporte em
+  31/07/2026. Estrutura com o código em `app/`.
+- `ssr: false` (SPA): tudo fica atrás de login, sem necessidade de SEO; simplifica a
+  autenticação e o PWA.
+- Token JWT em cookie (`SameSite=Lax`, 60 min, mesma validade da API) + estado
+  compartilhado; resposta 401 da API encerra a sessão.
+- Organização inspirada em plataformas escolares (ex.: Plurall): início com "o que
+  fazer agora", salas → módulos → exercícios, desempenho. Identidade visual própria.
+- Identidade "caderno de matemática": papel quadriculado, tinta azul-escura, caneta
+  azul para ações, marca-texto amarelo para pontos e destaques. Fontes Lexend (texto,
+  feita para facilitar a leitura) e Bricolage Grotesque (títulos e números).
+- Fontes servidas pelo próprio app (@nuxt/fonts): o navegador do aluno não consulta
+  servidores do Google (minimização de dados).
+- Acessibilidade: foco visível, rótulos em todos os campos, avisos com role="alert",
+  respeito a "reduzir movimento".
