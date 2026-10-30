@@ -2,7 +2,9 @@
 
 Variáveis:
   DATABASE_URL     ex.: postgresql+psycopg://tcc:tcc@localhost:5432/tcc
-                   (padrão: SQLite local, só para desenvolvimento rápido)
+                   (padrão: SQLite local, só para desenvolvimento rápido).
+                   Endereços "postgres://" ou "postgresql://" (como os que o Neon
+                   e o Render entregam) são convertidos para o driver psycopg 3.
   SEGREDO_JWT      chave para assinar os tokens (OBRIGATÓRIA fora do modo dev)
   MINUTOS_TOKEN    validade do token de acesso (padrão 60)
   ORIGENS_CORS     endereços do frontend separados por vírgula
@@ -17,10 +19,19 @@ from dataclasses import dataclass, field
 SEGREDO_DEV = "segredo-de-desenvolvimento-troque-em-producao"
 
 
+def normalizar_url_banco(url: str) -> str:
+    """O SQLAlchemy precisa saber o driver: "postgresql://..." vira "postgresql+psycopg://..."."""
+    for prefixo in ("postgres://", "postgresql://"):
+        if url.startswith(prefixo):
+            return "postgresql+psycopg://" + url[len(prefixo):]
+    return url
+
+
 @dataclass(frozen=True)
 class Config:
     ambiente: str = field(default_factory=lambda: os.getenv("AMBIENTE", "dev"))
-    database_url: str = field(default_factory=lambda: os.getenv("DATABASE_URL", "sqlite:///./dev.db"))
+    database_url: str = field(default_factory=lambda: normalizar_url_banco(
+        os.getenv("DATABASE_URL", "sqlite:///./dev.db")))
     segredo_jwt: str = field(default_factory=lambda: os.getenv("SEGREDO_JWT", SEGREDO_DEV))
     minutos_token: int = field(default_factory=lambda: int(os.getenv("MINUTOS_TOKEN", "60")))
     origens_cors: tuple[str, ...] = field(default_factory=lambda: tuple(

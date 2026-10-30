@@ -179,3 +179,20 @@ TCC). Desenvolvimento e testes em SQLite; produção em PostgreSQL pela variáve
 - "Continuar de onde parou" (`/eu/continuar`): o módulo da última resposta, se
   ainda faltar exercício; senão o próximo da mesma sala; senão qualquer módulo
   com exercício pendente. Sem pendências, o início diz que o aluno está em dia.
+
+## P13 — Publicação (Neon + Render, planos gratuitos)
+- Banco: PostgreSQL no Neon, região São Paulo (dados no Brasil; plano gratuito
+  permanente, 1 GB). API e site: Render (plano gratuito), descritos em
+  `render.yaml` na raiz (infraestrutura como código: o ambiente é reproduzível).
+- Segredos (endereço do banco, chave do JWT) ficam só no painel do Render; a
+  chave do JWT é gerada pelo próprio Render. `AMBIENTE=producao` faz a API se
+  recusar a subir sem um segredo próprio.
+- HTTPS fornecido pelo Render: requisito do PWA e da LGPD (dados em trânsito
+  cifrados). CORS liberado só para o endereço do site.
+- Limitação do plano gratuito: a API "dorme" após ~15 min sem uso e o primeiro
+  acesso depois disso demora (~1 min); o Neon também suspende o banco parado
+  (tratado com `pool_pre_ping`). Aceitável para um protótipo de TCC; em uso real
+  numa escola, seria preciso um plano pago ou um servidor da instituição.
+- A API fica nos EUA (o Render não tem região no Brasil) e o banco em São Paulo:
+  os dados ficam armazenados no Brasil, mas trafegam pela API nos EUA. Ponto a
+  citar na discussão de LGPD (transferência internacional, art. 33).

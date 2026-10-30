@@ -7,8 +7,11 @@ from sqlmodel import Session, SQLModel, create_engine
 from .config import config
 
 # check_same_thread só existe no SQLite; o FastAPI usa várias threads
-_args = {"check_same_thread": False} if config.database_url.startswith("sqlite") else {}
-engine = create_engine(config.database_url, connect_args=_args)
+_sqlite = config.database_url.startswith("sqlite")
+_args = {"check_same_thread": False} if _sqlite else {}
+# pool_pre_ping: testa a conexão antes de usar. O Neon (gratuito) desliga o banco depois de
+# alguns minutos parado e derruba as conexões abertas; sem isso, a 1ª requisição daria erro.
+engine = create_engine(config.database_url, connect_args=_args, pool_pre_ping=not _sqlite)
 
 
 def criar_tabelas() -> None:
