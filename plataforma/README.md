@@ -44,3 +44,12 @@ Sem configurar nada, a API usa SQLite (`dev.db`); para PostgreSQL, veja `docker-
 | POST | /exercicios/{id}/responder | aluno matriculado | responde; recebe correção, explicação e pontos |
 | GET | /eu/progresso | aluno | pontos, exercícios acertados, streak atual e melhor streak |
 | GET | /salas/{id}/ranking | dono ou matriculado | ranking da sala (nomes abreviados para alunos) |
+| GET | /eu/estilo | aluno | estado do questionário de estilos (próxima pergunta ou resultado) |
+| POST | /eu/estilo/iniciar | aluno | começa (ou recomeça) o questionário |
+| POST | /eu/estilo/responder | aluno | responde a pergunta atual; devolve a próxima ou o resultado |
+
+**Questionário de estilos:** antes de usar, exporte o modelo da parte de IA
+(`cd ia; python scripts/exportar_modelo.py`), que grava
+`backend/app/ils/modelo_tac.json`. Sem ele, as rotas /eu/estilo respondem 503.
+Os textos dos 44 itens ficam em `backend/app/ils/itens.json` (provisórios até
+serem trocados pela versão oficial em português).

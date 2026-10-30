@@ -79,3 +79,18 @@ class Resposta(SQLModel, table=True):
     correta: bool
     pontos_ganhos: int = 0                            # só a 1ª resposta certa pontua
     respondida_em: datetime = Field(default_factory=agora)
+
+
+class QuestionarioEstilo(SQLModel, table=True):
+    """Questionário de estilos de aprendizagem (ILS adaptativo). Um por aluno: refazer substitui o anterior.
+
+    Guarda as respostas (para retomar de onde parou e para o aluno baixar seus dados) e o
+    resultado. Nenhuma outra informação é derivada ou compartilhada a partir dele.
+    """
+    id: int | None = Field(default=None, primary_key=True)
+    aluno_id: int = Field(foreign_key="usuario.id", index=True, unique=True)
+    respostas: list[list[int]] = Field(default_factory=list, sa_column=Column(JSON, nullable=False))  # [[item, 1=a / 0=b], ...]
+    resultado: list[dict] | None = Field(default=None, sa_column=Column(JSON, nullable=True))
+    modelo: str = ""                                  # experimento que gerou o modelo (rastreabilidade)
+    iniciado_em: datetime = Field(default_factory=agora)
+    concluido_em: datetime | None = None

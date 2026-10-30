@@ -6,6 +6,7 @@ entrada não deixa o cliente escolher campos como id ou datas.
 
 import re
 from datetime import datetime
+from typing import Literal
 
 from pydantic import BaseModel, Field, field_validator, model_validator
 
@@ -170,3 +171,35 @@ class LinhaRanking(BaseModel):
     nome: str
     pontos: int
     sou_eu: bool = False
+
+
+# ---------------------------------------------------------------- estilo de aprendizagem (ILS)
+class PerguntaEstilo(BaseModel):
+    item: int                  # número do item no ILS (1..44); o aluno não precisa ver
+    numero: int                # 1ª, 2ª, 3ª... pergunta feita a este aluno
+    enunciado: str
+    alternativa_a: str
+    alternativa_b: str
+
+
+class DimensaoEstilo(BaseModel):
+    dimensao: str              # ati_ref, sen_int, vis_ver, seq_glo
+    polo: str                  # ex.: "ativo"
+    polo_oposto: str           # ex.: "reflexivo"
+    confianca: float           # P(o ILS completo daria este polo), entre 0,5 e 1
+    n_questoes: int
+
+
+class EstadoEstilo(BaseModel):
+    status: Literal["nao_iniciado", "em_andamento", "concluido"]
+    respondidas: int = 0
+    partes_concluidas: int = 0          # dimensões já decididas (0 a 4)
+    pergunta: PerguntaEstilo | None = None
+    resultado: list[DimensaoEstilo] | None = None
+    concluido_em: datetime | None = None
+    textos_provisorios: bool = False    # itens.json ainda sem os textos oficiais
+
+
+class RespostaEstiloEntrada(BaseModel):
+    item: int = Field(ge=1, le=44)      # a pergunta que o aluno viu (confere se é a atual)
+    resposta: Literal["a", "b"]

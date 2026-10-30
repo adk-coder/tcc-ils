@@ -10,6 +10,8 @@ useHead({ title: 'Privacidade — MatIF' })
     <p>O MatIF é uma plataforma de reforço de matemática desenvolvida como Trabalho de Conclusão de Curso no Instituto Federal Catarinense, Campus Videira.</p>
     <h2 class="text-lg">Quais dados guardamos</h2>
     <p>Somente seu nome, seu e-mail, sua senha (guardada de forma cifrada, nunca em texto) e as respostas que você der aos exercícios. Não pedimos CPF, data de nascimento, endereço nem telefone.</p>
+    <h2 class="text-lg">Questionário de estilos de aprendizagem</h2>
+    <p>Se você responder o questionário "Meu estilo", guardamos suas respostas e o resultado, para você poder parar e continuar depois e rever o resultado. Só você vê o seu resultado. Você pode refazer o questionário (o anterior é apagado), baixar esses dados ou apagá-los junto com a conta.</p>
     <h2 class="text-lg">Para que usamos</h2>
     <p>Para você entrar na plataforma, participar das salas do seu professor, corrigir seus exercícios e mostrar seu progresso. Seus dados não são vendidos nem compartilhados.</p>
     <h2 class="text-lg">Quem vê o quê</h2>

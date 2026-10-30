@@ -3,11 +3,13 @@
 const route = useRoute()
 const sessao = useSessao()
 
-const itens = [
+// "Meu estilo" (questionário de estilos de aprendizagem) só aparece para alunos
+const itens = computed(() => [
   { para: '/', rotulo: 'Início', icone: 'inicio' as const },
   { para: '/salas', rotulo: 'Salas', icone: 'salas' as const },
+  ...(sessao.ehProfessor.value ? [] : [{ para: '/estilo', rotulo: 'Meu estilo', icone: 'estilo' as const }]),
   { para: '/conta', rotulo: 'Conta', icone: 'conta' as const },
-]
+])
 
 function ativo(para: string) {
   return para === '/' ? route.path === '/' : route.path.startsWith(para)
@@ -45,7 +47,8 @@ function ativo(para: string) {
     </main>
 
     <!-- barra inferior (celular) -->
-    <nav class="fixed inset-x-0 bottom-0 z-10 grid grid-cols-3 border-t border-linha bg-white pb-[env(safe-area-inset-bottom)] md:hidden" aria-label="Principal">
+    <nav class="fixed inset-x-0 bottom-0 z-10 grid border-t border-linha bg-white pb-[env(safe-area-inset-bottom)] md:hidden"
+         :class="itens.length === 4 ? 'grid-cols-4' : 'grid-cols-3'" aria-label="Principal">
       <NuxtLink
         v-for="item in itens" :key="item.para" :to="item.para"
         class="flex flex-col items-center gap-0.5 py-2.5 text-xs no-underline"

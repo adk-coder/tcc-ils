@@ -88,3 +88,29 @@ TCC). Desenvolvimento e testes em SQLite; produção em PostgreSQL pela variáve
   segundo clique, sem a janela de confirmação do navegador.
 - Ranking ao lado dos módulos em telas grandes e abaixo deles no celular; o aluno se
   vê destacado com marca-texto e "(você)".
+
+## P10 — Questionário de estilos de aprendizagem na plataforma (etapa 3)
+- Só alunos respondem; só o próprio aluno vê o resultado (o professor não tem
+  rota para isso nesta versão). Respostas e resultado entram na exportação de
+  dados e são apagados com a conta. Refazer apaga o anterior (um por aluno).
+- O servidor escolhe cada pergunta (`app/ils/motor.py`, ver D19) e só aceita a
+  resposta da pergunta atual: evita resposta duplicada por clique duplo e
+  impede que o cliente manipule a ordem. Respostas ficam salvas a cada passo,
+  então o aluno pode parar e continuar depois.
+- Textos dos 44 itens em `app/ils/itens.json`, separados do código. O
+  repositório traz textos PROVISÓRIOS (status "PROVISORIO"); a tela avisa
+  enquanto não forem trocados pela versão em português adotada no TCC. Os
+  textos não foram escritos por nós de propósito: precisa ser o instrumento
+  publicado, para o resultado ser comparável ao ILS. O ILS é gratuito para uso
+  não comercial; tradução e uso dentro de software devem ser confirmados com
+  o orientador / nos termos do autor.
+- Resultado mostrado como preferência (polo em marca-texto + o polo oposto),
+  com descrição curta, dica de estudo e a "certeza da IA" (probabilidade de o
+  ILS completo dar o mesmo polo). Não mostramos intensidade (leve/moderada/
+  forte), porque o TAC foi escolhido e avaliado pelo POLO.
+- A tela lembra que estilo é preferência, não limite. Ponto para a banca: a
+  literatura critica a ideia de que ensinar "no estilo" do aluno melhora o
+  aprendizado; aqui o resultado serve para autoconhecimento e dicas de estudo,
+  não para restringir o conteúdo que cada aluno recebe.
+- Sem resposta certa ou errada, não há botão "Responder": tocar na
+  alternativa envia (depois do círculo de caneta se desenhar).

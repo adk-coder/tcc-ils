@@ -84,3 +84,32 @@ export interface LinhaRanking {
 export function letra(i: number): string {
   return String.fromCharCode(65 + i)
 }
+
+// ------------------------------------------------------------ estilo de aprendizagem (ILS)
+export type Dimensao = 'ati_ref' | 'sen_int' | 'vis_ver' | 'seq_glo'
+
+export interface PerguntaEstilo {
+  item: number            // número do item no ILS (o aluno não vê)
+  numero: number          // 1ª, 2ª, 3ª pergunta feita a este aluno
+  enunciado: string
+  alternativa_a: string
+  alternativa_b: string
+}
+
+export interface DimensaoEstilo {
+  dimensao: Dimensao
+  polo: string            // ex.: "ativo"
+  polo_oposto: string     // ex.: "reflexivo"
+  confianca: number       // 0,5 a 1: chance de o ILS completo dar o mesmo polo
+  n_questoes: number
+}
+
+export interface EstadoEstilo {
+  status: 'nao_iniciado' | 'em_andamento' | 'concluido'
+  respondidas: number
+  partes_concluidas: number
+  pergunta: PerguntaEstilo | null
+  resultado: DimensaoEstilo[] | null
+  concluido_em: string | null
+  textos_provisorios: boolean
+}

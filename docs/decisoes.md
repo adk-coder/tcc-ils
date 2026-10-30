@@ -200,6 +200,37 @@ mais questões do que essa regra.
 - A 1ª execução fica registrada (experimento 2026-10-27_075247_rl) como
   resultado negativo, útil para o capítulo de Resultados.
 
+## D18 — 2ª execução do RL (recompensa por potencial): ainda pior que as linhas de base
+- λ escolhido na validação: 0,025. TESTE: 35,12 questões em média, pior
+  dimensão 0,937. Cumpre a meta de 90%, mas com mais perguntas que a parada
+  garantida (32,7, com 100% de acerto) e mais que o dobro do TAC (14,8).
+- Política gulosa (mesmo ambiente e classificador, sem RL), TESTE: 14,37
+  questões, pior dimensão 0,8995 (no limite da meta; o limiar foi escolhido na
+  validação).
+- Leitura: a modelagem por potencial melhorou o sinal, mas o PPO continua sem
+  encontrar a política que o ambiente permite. O que funciona é a MODELAGEM
+  (classificador / TRI) com uma regra de seleção simples. Resultado negativo
+  do RL a relatar, não a esconder. Possível continuação (não feita): iniciar o
+  PPO imitando a política gulosa (behavior cloning) e só então ajustar.
+
+## D19 — Modelo usado na plataforma: TAC com alvo "escore"
+- Escolhido o TAC (D14) com os limiares escolhidos na validação: é o único que
+  cumpre a meta em TODAS as dimensões no teste (pior 0,901) com poucas
+  questões (14,8). A gulosa faz 14,37, mas fica em 0,8995 numa dimensão e
+  depende do PyTorch no servidor.
+- Exportação: `ia/scripts/exportar_modelo.py` grava a, b (girth, treino) e os
+  limiares em `plataforma/backend/app/ils/modelo_tac.json`, com o nome do
+  experimento e o desempenho no teste (rastreabilidade).
+- O backend tem uma cópia enxuta do TAC só com numpy (`app/ils/motor.py`); o
+  teste `ia/testes/test_motor_plataforma.py` garante que ela escolhe os mesmos
+  itens, para no mesmo momento e dá a mesma probabilidade que o TAC avaliado.
+- Na plataforma as 4 dimensões são intercaladas (rodízio pela que tem menos
+  respostas). Como no TAC as dimensões são independentes, a ordem não muda o
+  resultado de nenhuma delas: o desempenho medido no teste vale para o sistema.
+- Ressalva honesta: os números (14,8 questões, ≥ 90%) são da base SINTÉTICA.
+  Com alunos reais do 9º ano, só um estudo comparando com o ILS completo diria
+  o desempenho de verdade.
+
 ## Pendências / riscos
 - As correlações de item são de universitários dos EUA, com o ILS em inglês;
   o público do sistema é o 9º ano no Brasil, com versão em português.

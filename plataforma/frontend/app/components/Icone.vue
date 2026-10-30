@@ -1,7 +1,7 @@
 <!-- Ícones simples em traço (desenhados como à caneta). -->
 <script setup lang="ts">
 withDefaults(defineProps<{
-  nome: 'inicio' | 'salas' | 'conta' | 'sair' | 'voltar' | 'mais' | 'lapis' | 'lixo' | 'certo' | 'trofeu' | 'livro'
+  nome: 'inicio' | 'salas' | 'conta' | 'sair' | 'voltar' | 'mais' | 'lapis' | 'lixo' | 'certo' | 'trofeu' | 'livro' | 'estilo'
   tamanho?: 'p' | 'm'
 }>(), { tamanho: 'm' })
 </script>
@@ -40,6 +40,10 @@ withDefaults(defineProps<{
     <template v-else-if="nome === 'trofeu'">
       <path d="M8 4h8v5a4 4 0 0 1-8 0z" /><path d="M8 6H5a3 3 0 0 0 3 4" /><path d="M16 6h3a3 3 0 0 1-3 4" />
       <path d="M12 13v4" /><path d="M8.5 20h7" />
+    </template>
+    <template v-else-if="nome === 'estilo'">
+      <path d="M9.5 18h5" /><path d="M10.5 21h3" />
+      <path d="M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.3 1.1 2.1v.1h5v-.1c0-.8.4-1.5 1.1-2.1A6 6 0 0 0 12 3z" />
     </template>
     <template v-else>
       <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z" />

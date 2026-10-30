@@ -12,7 +12,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .config import config
 from .db import criar_tabelas
-from .rotas import auth, conteudo, gamificacao, salas
+from .rotas import auth, conteudo, estilo, gamificacao, salas
 
 
 @asynccontextmanager
@@ -31,6 +31,7 @@ app.include_router(auth.router)
 app.include_router(salas.router)
 app.include_router(conteudo.router)
 app.include_router(gamificacao.router)
+app.include_router(estilo.router)
 
 
 @app.get("/saude", tags=["infra"])

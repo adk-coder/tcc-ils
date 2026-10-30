@@ -1,0 +1,271 @@
+{
+  "status": "PROVISORIO",
+  "fonte": "PREENCHER: referência da versão em português do ILS usada no TCC (e a permissão de uso, se houver).",
+  "observacao": "Mude status para OFICIAL depois de preencher os 44 itens. Itens 1,5,9,... = ativo/reflexivo; 2,6,10,... = sensorial/intuitivo; 3,7,11,... = visual/verbal; 4,8,12,... = sequencial/global. A alternativa (a) é sempre a do primeiro polo.",
+  "itens": [
+    {
+      "item": 1,
+      "enunciado": "[Item 1 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 1, alternativa (a)]",
+      "b": "[Item 1, alternativa (b)]"
+    },
+    {
+      "item": 2,
+      "enunciado": "[Item 2 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 2, alternativa (a)]",
+      "b": "[Item 2, alternativa (b)]"
+    },
+    {
+      "item": 3,
+      "enunciado": "[Item 3 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 3, alternativa (a)]",
+      "b": "[Item 3, alternativa (b)]"
+    },
+    {
+      "item": 4,
+      "enunciado": "[Item 4 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 4, alternativa (a)]",
+      "b": "[Item 4, alternativa (b)]"
+    },
+    {
+      "item": 5,
+      "enunciado": "[Item 5 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 5, alternativa (a)]",
+      "b": "[Item 5, alternativa (b)]"
+    },
+    {
+      "item": 6,
+      "enunciado": "[Item 6 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 6, alternativa (a)]",
+      "b": "[Item 6, alternativa (b)]"
+    },
+    {
+      "item": 7,
+      "enunciado": "[Item 7 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 7, alternativa (a)]",
+      "b": "[Item 7, alternativa (b)]"
+    },
+    {
+      "item": 8,
+      "enunciado": "[Item 8 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 8, alternativa (a)]",
+      "b": "[Item 8, alternativa (b)]"
+    },
+    {
+      "item": 9,
+      "enunciado": "[Item 9 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 9, alternativa (a)]",
+      "b": "[Item 9, alternativa (b)]"
+    },
+    {
+      "item": 10,
+      "enunciado": "[Item 10 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 10, alternativa (a)]",
+      "b": "[Item 10, alternativa (b)]"
+    },
+    {
+      "item": 11,
+      "enunciado": "[Item 11 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 11, alternativa (a)]",
+      "b": "[Item 11, alternativa (b)]"
+    },
+    {
+      "item": 12,
+      "enunciado": "[Item 12 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 12, alternativa (a)]",
+      "b": "[Item 12, alternativa (b)]"
+    },
+    {
+      "item": 13,
+      "enunciado": "[Item 13 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 13, alternativa (a)]",
+      "b": "[Item 13, alternativa (b)]"
+    },
+    {
+      "item": 14,
+      "enunciado": "[Item 14 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 14, alternativa (a)]",
+      "b": "[Item 14, alternativa (b)]"
+    },
+    {
+      "item": 15,
+      "enunciado": "[Item 15 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 15, alternativa (a)]",
+      "b": "[Item 15, alternativa (b)]"
+    },
+    {
+      "item": 16,
+      "enunciado": "[Item 16 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 16, alternativa (a)]",
+      "b": "[Item 16, alternativa (b)]"
+    },
+    {
+      "item": 17,
+      "enunciado": "[Item 17 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 17, alternativa (a)]",
+      "b": "[Item 17, alternativa (b)]"
+    },
+    {
+      "item": 18,
+      "enunciado": "[Item 18 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 18, alternativa (a)]",
+      "b": "[Item 18, alternativa (b)]"
+    },
+    {
+      "item": 19,
+      "enunciado": "[Item 19 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 19, alternativa (a)]",
+      "b": "[Item 19, alternativa (b)]"
+    },
+    {
+      "item": 20,
+      "enunciado": "[Item 20 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 20, alternativa (a)]",
+      "b": "[Item 20, alternativa (b)]"
+    },
+    {
+      "item": 21,
+      "enunciado": "[Item 21 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 21, alternativa (a)]",
+      "b": "[Item 21, alternativa (b)]"
+    },
+    {
+      "item": 22,
+      "enunciado": "[Item 22 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 22, alternativa (a)]",
+      "b": "[Item 22, alternativa (b)]"
+    },
+    {
+      "item": 23,
+      "enunciado": "[Item 23 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 23, alternativa (a)]",
+      "b": "[Item 23, alternativa (b)]"
+    },
+    {
+      "item": 24,
+      "enunciado": "[Item 24 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 24, alternativa (a)]",
+      "b": "[Item 24, alternativa (b)]"
+    },
+    {
+      "item": 25,
+      "enunciado": "[Item 25 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 25, alternativa (a)]",
+      "b": "[Item 25, alternativa (b)]"
+    },
+    {
+      "item": 26,
+      "enunciado": "[Item 26 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 26, alternativa (a)]",
+      "b": "[Item 26, alternativa (b)]"
+    },
+    {
+      "item": 27,
+      "enunciado": "[Item 27 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 27, alternativa (a)]",
+      "b": "[Item 27, alternativa (b)]"
+    },
+    {
+      "item": 28,
+      "enunciado": "[Item 28 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 28, alternativa (a)]",
+      "b": "[Item 28, alternativa (b)]"
+    },
+    {
+      "item": 29,
+      "enunciado": "[Item 29 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 29, alternativa (a)]",
+      "b": "[Item 29, alternativa (b)]"
+    },
+    {
+      "item": 30,
+      "enunciado": "[Item 30 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 30, alternativa (a)]",
+      "b": "[Item 30, alternativa (b)]"
+    },
+    {
+      "item": 31,
+      "enunciado": "[Item 31 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 31, alternativa (a)]",
+      "b": "[Item 31, alternativa (b)]"
+    },
+    {
+      "item": 32,
+      "enunciado": "[Item 32 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 32, alternativa (a)]",
+      "b": "[Item 32, alternativa (b)]"
+    },
+    {
+      "item": 33,
+      "enunciado": "[Item 33 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 33, alternativa (a)]",
+      "b": "[Item 33, alternativa (b)]"
+    },
+    {
+      "item": 34,
+      "enunciado": "[Item 34 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 34, alternativa (a)]",
+      "b": "[Item 34, alternativa (b)]"
+    },
+    {
+      "item": 35,
+      "enunciado": "[Item 35 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 35, alternativa (a)]",
+      "b": "[Item 35, alternativa (b)]"
+    },
+    {
+      "item": 36,
+      "enunciado": "[Item 36 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 36, alternativa (a)]",
+      "b": "[Item 36, alternativa (b)]"
+    },
+    {
+      "item": 37,
+      "enunciado": "[Item 37 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 37, alternativa (a)]",
+      "b": "[Item 37, alternativa (b)]"
+    },
+    {
+      "item": 38,
+      "enunciado": "[Item 38 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 38, alternativa (a)]",
+      "b": "[Item 38, alternativa (b)]"
+    },
+    {
+      "item": 39,
+      "enunciado": "[Item 39 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 39, alternativa (a)]",
+      "b": "[Item 39, alternativa (b)]"
+    },
+    {
+      "item": 40,
+      "enunciado": "[Item 40 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 40, alternativa (a)]",
+      "b": "[Item 40, alternativa (b)]"
+    },
+    {
+      "item": 41,
+      "enunciado": "[Item 41 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 41, alternativa (a)]",
+      "b": "[Item 41, alternativa (b)]"
+    },
+    {
+      "item": 42,
+      "enunciado": "[Item 42 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 42, alternativa (a)]",
+      "b": "[Item 42, alternativa (b)]"
+    },
+    {
+      "item": 43,
+      "enunciado": "[Item 43 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 43, alternativa (a)]",
+      "b": "[Item 43, alternativa (b)]"
+    },
+    {
+      "item": 44,
+      "enunciado": "[Item 44 do ILS: preencher com o enunciado da versão em português adotada]",
+      "a": "[Item 44, alternativa (a)]",
+      "b": "[Item 44, alternativa (b)]"
+    }
+  ]
+}
