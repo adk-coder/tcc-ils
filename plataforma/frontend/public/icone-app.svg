@@ -1,0 +1,10 @@
+<!-- Ícone do app (PWA). Quadrado e sem cantos arredondados: o sistema do celular
+     aplica a própria máscara. O desenho fica dentro da "zona segura" central (80%). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#F7F9FC"/>
+  <path d="M0 64H512M0 128H512M0 192H512M0 256H512M0 320H512M0 384H512M0 448H512M64 0V512M128 0V512M192 0V512M256 0V512M320 0V512M384 0V512M448 0V512"
+        stroke="#DCE6F2" stroke-width="6"/>
+  <rect x="120" y="276" width="272" height="76" rx="10" fill="#F5D90A"/>
+  <path d="M160 352V184l96 96 96-96v168" fill="none" stroke="#2B59C3" stroke-width="40"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

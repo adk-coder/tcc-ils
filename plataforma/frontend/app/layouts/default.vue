@@ -1,6 +1,7 @@
 <!-- Moldura das páginas logadas: menu lateral no computador, barra inferior no celular. -->
 <script setup lang="ts">
 const route = useRoute()
+const online = useState('online', () => true)
 const sessao = useSessao()
 
 // "Meu estilo" (questionário de estilos de aprendizagem) só aparece para alunos
@@ -42,6 +43,10 @@ function ativo(para: string) {
 
     <!-- conteúdo -->
     <main class="mx-auto w-full max-w-4xl px-4 pb-28 pt-6 md:px-10 md:pb-12 md:pt-10">
+      <!-- sem internet: o app abre, mas exercícios, ranking e questionário dependem da API -->
+      <p v-if="!online" role="status" class="mb-6 rounded-lg border-l-4 border-marca bg-marca/20 px-4 py-3 text-sm">
+        Você está sem internet. Os exercícios e o questionário voltam a funcionar assim que a conexão voltar.
+      </p>
       <div class="mb-6 md:hidden"><NuxtLink to="/" class="no-underline" aria-label="MatIF, início"><Logo /></NuxtLink></div>
       <slot />
     </main>

@@ -3,6 +3,7 @@
 useHead({ title: 'Conta — MatIF' })
 const sessao = useSessao()
 const api = useApi()
+const { $pwa } = useNuxtApp()   // PWA: convite de instalação (só aparece em navegadores que permitem)
 
 const baixando = ref(false)
 async function baixarDados() {
@@ -41,6 +42,16 @@ async function excluirConta() {
       <div class="px-5 py-4"><p class="text-sm text-tinta-suave">Nome</p><p>{{ sessao.usuario.value?.nome }}</p></div>
       <div class="px-5 py-4"><p class="text-sm text-tinta-suave">E-mail</p><p>{{ sessao.usuario.value?.email }}</p></div>
       <div class="px-5 py-4"><p class="text-sm text-tinta-suave">Perfil</p><p>{{ sessao.ehProfessor.value ? 'Professor' : 'Aluno' }}</p></div>
+    </section>
+
+    <section class="flex flex-col gap-3">
+      <h2 class="text-xl">Instalar o app</h2>
+      <p class="text-tinta-suave">Coloque o MatIF na tela inicial do celular ou do computador e abra como um aplicativo.</p>
+      <div v-if="$pwa?.showInstallPrompt"><Botao variante="secundario" @click="$pwa.install()">Instalar o MatIF</Botao></div>
+      <p class="text-sm text-tinta-suave">
+        No iPhone: toque em <strong>Compartilhar</strong> e depois em <strong>Adicionar à Tela de Início</strong>.
+        No Android, se o botão não aparecer, use o menu do navegador → <strong>Instalar app</strong>.
+      </p>
     </section>
 
     <section class="flex flex-col gap-3">

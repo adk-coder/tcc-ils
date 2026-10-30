@@ -145,3 +145,21 @@ TCC). Desenvolvimento e testes em SQLite; produção em PostgreSQL pela variáve
   aparece como lembrete de que todo mundo usa os dois); (4) os números da IA
   (perguntas e "segurança" por parte) num bloco recolhido, "Como a IA chegou
   nesse resultado?", para transparência sem confundir.
+
+## P11 — PWA (instalável no celular e no computador)
+- Módulo `@vite-pwa/nuxt` (Workbox): manifesto (nome, cores do caderno, ícones)
+  e service worker gerados no build. É o que torna o sistema "multiplataforma"
+  com um código só: navegador, Android, iPhone e computador.
+- O que fica offline: só o "casco" do app (HTML, JS, CSS, fontes, ícones). Os
+  dados (exercícios, respostas, ranking, questionário) vêm sempre da API e NÃO
+  são guardados no aparelho: evita mostrar dados velhos (pontos, ranking) e
+  dados pessoais de um aluno num aparelho compartilhado (LGPD). Sem internet, o
+  app abre e mostra um aviso.
+- Atualização automática (`registerType: 'autoUpdate'`): ao publicar uma versão
+  nova, o app se atualiza na próxima abertura.
+- Ícones gerados de um SVG (`public/icone-app.svg`) com `@vite-pwa/assets-generator`
+  (preset minimal-2023), incluindo o ícone "maskable" para Android.
+- Instalação: botão na página Conta quando o navegador oferece (Chrome/Edge/
+  Android); no iPhone, instrução manual (o Safari não tem convite automático).
+- Requisito: PWA só funciona em HTTPS (ou localhost). No celular, só dá para
+  testar depois da publicação.
