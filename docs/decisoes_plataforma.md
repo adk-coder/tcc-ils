@@ -71,3 +71,20 @@ TCC). Desenvolvimento e testes em SQLite; produção em PostgreSQL pela variáve
   servidores do Google (minimização de dados).
 - Acessibilidade: foco visível, rótulos em todos os campos, avisos com role="alert",
   respeito a "reduzir movimento".
+
+## P9 — Frontend etapa 2: módulos, exercícios e ranking
+- Correção na hora (feedback imediato): o aluno escolhe, clica em "Responder" e a
+  tela mostra certo/errado, a alternativa correta e a explicação do professor.
+  O "Responder" separado evita enviar por toque acidental no celular.
+- Linguagem visual do caderno aplicada à correção: a alternativa escolhida ganha um
+  círculo "à caneta" (traço SVG que se desenha); a certa recebe marca-texto; a
+  escolhida errada fica riscada em vermelho. A cor nunca é o único sinal (há ícone
+  de "certo", risco e texto), pensando em daltonismo e leitores de tela.
+- Pontos aparecem só quando a API os concede (1ª tentativa certa, P7); ao refazer,
+  a tela avisa que não vale pontos.
+- O texto do módulo é texto simples (parágrafos separados por linha em branco), sem
+  Markdown nem fórmulas por enquanto. Possível evolução: KaTeX para frações e potências.
+- Ações destrutivas (apagar módulo/exercício, remover aluno, sair da sala) pedem um
+  segundo clique, sem a janela de confirmação do navegador.
+- Ranking ao lado dos módulos em telas grandes e abaixo deles no celular; o aluno se
+  vê destacado com marca-texto e "(você)".
