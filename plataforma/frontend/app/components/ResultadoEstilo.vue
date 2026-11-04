@@ -4,16 +4,22 @@
      3. cada parte explicada, só com o estilo dele (o oposto aparece como lembrete, não como opção);
      4. os números da IA ficam guardados em "Como a IA chegou nesse resultado". -->
 <script setup lang="ts">
-import type { DimensaoEstilo } from '~/utils/tipos'
+import type { Dimensao, DimensaoEstilo, ItemRespondido } from '~/utils/tipos'
 import { DIMENSOES, POLOS, frasePerfil } from '~/utils/estilos'
 
-const props = defineProps<{ resultado: DimensaoEstilo[]; respondidas: number }>()
+const props = defineProps<{
+  resultado: DimensaoEstilo[]
+  respondidas: number
+  itensRespondidos?: ItemRespondido[] | null
+}>()
 
 const polos = computed(() => props.resultado.map(d => d.polo))
 const frase = computed(() => frasePerfil(polos.value))
 
-function porcentagem(x: number) {
-  return `${Math.round(100 * x)}%`
+function porcentagem(x: number) { return `${Math.round(100 * x)}%` }
+
+function polosDaDimensao(d: Dimensao): string {
+  return DIMENSOES[d]?.polos.join('/') ?? d
 }
 </script>
 
@@ -66,9 +72,8 @@ function porcentagem(x: number) {
       </summary>
       <div class="mt-3 flex flex-col gap-3 text-sm">
         <p>
-          O questionário completo tem 44 perguntas. Você respondeu <strong>{{ respondidas }}</strong>: em cada parte,
-          a inteligência artificial escolheu as perguntas que mais ajudavam a decidir e parou quando ficou segura de que
-          as 44 perguntas dariam o mesmo resultado.
+          O questionário completo tem 44 perguntas. Em cada parte, a inteligência artificial escolheu
+          as perguntas mais úteis para você e parou quando ficou segura de que as 44 dariam o mesmo resultado.
         </p>
         <table class="w-full text-left">
           <thead class="text-tinta-suave">
@@ -85,6 +90,24 @@ function porcentagem(x: number) {
         <p class="text-tinta-suave">
           "Segurança" é a chance, calculada pela IA, de o questionário completo dar o mesmo estilo nessa parte.
         </p>
+
+        <template v-if="itensRespondidos?.length">
+          <h3 class="font-medium">Perguntas que a IA escolheu</h3>
+          <ol class="flex flex-col">
+            <li v-for="ir in itensRespondidos" :key="ir.numero"
+                class="flex gap-3 border-t border-linha py-2">
+              <span class="w-6 shrink-0 font-display font-semibold text-caneta">{{ ir.numero }}ª</span>
+              <div class="min-w-0">
+                <p class="text-xs text-tinta-suave">Item {{ ir.item }} · {{ polosDaDimensao(ir.dimensao) }}</p>
+                <p class="mt-0.5 italic">{{ ir.enunciado }}</p>
+              </div>
+            </li>
+          </ol>
+          <p class="text-tinta-suave">
+            Você respondeu <strong class="text-tinta">{{ respondidas }}</strong> de 44 perguntas.
+            A IA parou cada parte quando já tinha segurança suficiente sobre o resultado.
+          </p>
+        </template>
       </div>
     </details>
   </div>

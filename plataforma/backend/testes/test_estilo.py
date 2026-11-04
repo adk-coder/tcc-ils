@@ -68,6 +68,14 @@ def test_fluxo_completo(com_motor):
     assert estado["status"] == "concluido" and estado["respondidas"] == n < 44
     assert [d["polo"] for d in estado["resultado"]] == ["ativo", "sensorial", "visual", "sequencial"]
     assert all(0.5 <= d["confianca"] <= 1 for d in estado["resultado"])
+    # itens_respondidos: presente no resultado, na ordem da sessão
+    assert len(estado["itens_respondidos"]) == n
+    ir0 = estado["itens_respondidos"][0]
+    assert ir0["numero"] == 1 and 1 <= ir0["item"] <= 44
+    assert ir0["dimensao"] in ("ati_ref", "sen_int", "vis_ver", "seq_glo")
+    assert isinstance(ir0["enunciado"], str) and ir0["enunciado"]
+    # numeros crescentes e consecutivos
+    assert [ir["numero"] for ir in estado["itens_respondidos"]] == list(range(1, n + 1))
 
     # continua concluído ao recarregar; responder de novo não é aceito
     assert com_motor.get("/eu/estilo", headers=ha).json()["status"] == "concluido"

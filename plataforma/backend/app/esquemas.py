@@ -190,12 +190,20 @@ class DimensaoEstilo(BaseModel):
     n_questoes: int
 
 
+class ItemRespondido(BaseModel):
+    numero: int                # posição na sessão (1ª, 2ª...)
+    item: int                  # número 1..44 no ILS
+    dimensao: str              # "ati_ref" | "sen_int" | "vis_ver" | "seq_glo"
+    enunciado: str             # enunciado curto da pergunta
+
+
 class EstadoEstilo(BaseModel):
     status: Literal["nao_iniciado", "em_andamento", "concluido"]
     respondidas: int = 0
     partes_concluidas: int = 0          # dimensões já decididas (0 a 4)
     pergunta: PerguntaEstilo | None = None
     resultado: list[DimensaoEstilo] | None = None
+    itens_respondidos: list[ItemRespondido] | None = None   # só no resultado final
     concluido_em: datetime | None = None
     textos_provisorios: bool = False    # itens.json ainda sem os textos oficiais
 

@@ -113,7 +113,8 @@ async function responder(resposta: 'a' | 'b') {
 
       <!-- 3. resultado -->
       <template v-else-if="estado.status === 'concluido' && estado.resultado">
-        <ResultadoEstilo :resultado="estado.resultado" :respondidas="estado.respondidas" />
+        <ResultadoEstilo :resultado="estado.resultado" :respondidas="estado.respondidas"
+                         :itens-respondidos="estado.itens_respondidos" />
         <p class="folha p-5 text-sm text-tinta-suave">
           Lembre: isto mostra <strong class="text-tinta">preferências</strong>, não limites. Treinar o jeito de que você
           gosta menos também ajuda a aprender.

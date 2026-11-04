@@ -104,12 +104,20 @@ export interface DimensaoEstilo {
   n_questoes: number
 }
 
+export interface ItemRespondido {
+  numero: number          // posição na sessão (1, 2...)
+  item: number            // 1..44 no ILS
+  dimensao: Dimensao
+  enunciado: string
+}
+
 export interface EstadoEstilo {
   status: 'nao_iniciado' | 'em_andamento' | 'concluido'
   respondidas: number
   partes_concluidas: number
   pergunta: PerguntaEstilo | null
   resultado: DimensaoEstilo[] | null
+  itens_respondidos: ItemRespondido[] | null  // só no resultado final
   concluido_em: string | null
   textos_provisorios: boolean
 }

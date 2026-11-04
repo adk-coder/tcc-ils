@@ -14,8 +14,8 @@ from sqlmodel import Session, delete, select
 
 from ..db import get_session
 from ..deps import exigir_aluno
-from ..esquemas import DimensaoEstilo, EstadoEstilo, PerguntaEstilo, RespostaEstiloEntrada
-from ..ils.motor import POLOS, MotorILS
+from ..esquemas import DimensaoEstilo, EstadoEstilo, ItemRespondido, PerguntaEstilo, RespostaEstiloEntrada
+from ..ils.motor import DIMENSOES, POLOS, MotorILS, dimensao_do_item
 from ..ils.textos import texto_do_item, textos_provisorios
 from ..modelos import QuestionarioEstilo, Usuario, agora
 
@@ -55,8 +55,18 @@ def _estado(q: QuestionarioEstilo | None, motor: MotorILS) -> EstadoEstilo:
     if q is None:
         return EstadoEstilo(status="nao_iniciado", textos_provisorios=provisorio)
     if q.concluido_em is not None:
+        itens_resp = [
+            ItemRespondido(
+                numero=i + 1,
+                item=item,
+                dimensao=DIMENSOES[dimensao_do_item(item)],
+                enunciado=texto_do_item(item)["enunciado"],
+            )
+            for i, (item, _) in enumerate(q.respostas)
+        ]
         return EstadoEstilo(status="concluido", respondidas=len(q.respostas), partes_concluidas=4,
                             resultado=[DimensaoEstilo(**r) for r in q.resultado or []],
+                            itens_respondidos=itens_resp,
                             concluido_em=q.concluido_em, textos_provisorios=provisorio)
     decisao = motor.proxima([(i, r) for i, r in q.respostas])
     texto = texto_do_item(decisao["item"])
