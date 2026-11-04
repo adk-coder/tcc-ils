@@ -22,8 +22,8 @@ function ativo(para: string) {
 
 <template>
   <div class="min-h-dvh papel-quadriculado md:flex">
-    <!-- menu lateral (computador) -->
-    <aside class="hidden md:flex md:w-60 md:shrink-0 md:flex-col md:border-r md:border-linha md:bg-white md:px-5 md:py-6">
+    <!-- menu lateral (computador): sticky para ficar visível ao rolar a página -->
+    <aside class="hidden md:sticky md:top-0 md:flex md:h-dvh md:w-60 md:shrink-0 md:flex-col md:overflow-y-auto md:border-r md:border-linha md:bg-white md:px-5 md:py-6">
       <NuxtLink to="/" class="no-underline" aria-label="MatIF, início"><Logo /></NuxtLink>
       <nav class="mt-10 flex flex-col gap-1" aria-label="Principal">
         <NuxtLink
@@ -44,14 +44,16 @@ function ativo(para: string) {
       </div>
     </aside>
 
-    <!-- conteúdo -->
-    <main class="mx-auto w-full max-w-4xl px-4 pb-28 pt-6 md:px-10 md:pb-12 md:pt-10">
-      <!-- sem internet: o app abre, mas exercícios, ranking e questionário dependem da API -->
-      <p v-if="!online" role="status" class="mb-6 rounded-lg border-l-4 border-marca bg-marca/20 px-4 py-3 text-sm">
-        Você está sem internet. Os exercícios e o questionário voltam a funcionar assim que a conexão voltar.
-      </p>
-      <div class="mb-6 md:hidden"><NuxtLink to="/" class="no-underline" aria-label="MatIF, início"><Logo /></NuxtLink></div>
-      <slot />
+    <!-- conteúdo: ocupa o espaço restante ao lado da barra; o wrapper interno centraliza com max-width -->
+    <main class="min-w-0 flex-1 px-4 pb-28 pt-6 md:px-10 md:pb-12 md:pt-10">
+      <div class="mx-auto max-w-4xl">
+        <!-- sem internet: o app abre, mas exercícios, ranking e questionário dependem da API -->
+        <p v-if="!online" role="status" class="mb-6 rounded-lg border-l-4 border-marca bg-marca/20 px-4 py-3 text-sm">
+          Você está sem internet. Os exercícios e o questionário voltam a funcionar assim que a conexão voltar.
+        </p>
+        <div class="mb-6 md:hidden"><NuxtLink to="/" class="no-underline" aria-label="MatIF, início"><Logo /></NuxtLink></div>
+        <slot />
+      </div>
     </main>
 
     <!-- barra inferior (celular) -->
