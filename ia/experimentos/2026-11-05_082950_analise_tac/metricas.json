@@ -1,0 +1,135 @@
+{
+  "duracao_segundos": 1.4,
+  "n_alunos_teste": 15000,
+  "acuracia_por_dimensao": {
+    "ati_ref": {
+      "acuracia": 0.9013,
+      "ic95_low": 0.8964,
+      "ic95_high": 0.9059,
+      "n_acertos": 13519,
+      "n_total": 15000
+    },
+    "sen_int": {
+      "acuracia": 0.9216,
+      "ic95_low": 0.9172,
+      "ic95_high": 0.9258,
+      "n_acertos": 13824,
+      "n_total": 15000
+    },
+    "vis_ver": {
+      "acuracia": 0.9209,
+      "ic95_low": 0.9165,
+      "ic95_high": 0.9251,
+      "n_acertos": 13814,
+      "n_total": 15000
+    },
+    "seq_glo": {
+      "acuracia": 0.9243,
+      "ic95_low": 0.92,
+      "ic95_high": 0.9285,
+      "n_acertos": 13865,
+      "n_total": 15000
+    }
+  },
+  "acuracia_perfil_completo": {
+    "acuracia": 0.7073,
+    "ic95_low": 0.7,
+    "ic95_high": 0.7146,
+    "n_acertos": 10610
+  },
+  "distribuicao_erros": {
+    "0": {
+      "alunos": 10610,
+      "percentual": 70.73
+    },
+    "1": {
+      "alunos": 3836,
+      "percentual": 25.57
+    },
+    "2": {
+      "alunos": 520,
+      "percentual": 3.47
+    },
+    "3": {
+      "alunos": 34,
+      "percentual": 0.23
+    },
+    "4": {
+      "alunos": 0,
+      "percentual": 0.0
+    }
+  },
+  "acuracia_por_intensidade": {
+    "ati_ref": {
+      "leve": {
+        "acuracia": 0.8276,
+        "n": 8004
+      },
+      "moderada": {
+        "acuracia": 0.9815,
+        "n": 5445
+      },
+      "forte": {
+        "acuracia": 1.0,
+        "n": 1551
+      }
+    },
+    "sen_int": {
+      "leve": {
+        "acuracia": 0.8148,
+        "n": 5945
+      },
+      "moderada": {
+        "acuracia": 0.9872,
+        "n": 5876
+      },
+      "forte": {
+        "acuracia": 1.0,
+        "n": 3179
+      }
+    },
+    "vis_ver": {
+      "leve": {
+        "acuracia": 0.8266,
+        "n": 6356
+      },
+      "moderada": {
+        "acuracia": 0.9856,
+        "n": 5831
+      },
+      "forte": {
+        "acuracia": 1.0,
+        "n": 2813
+      }
+    },
+    "seq_glo": {
+      "leve": {
+        "acuracia": 0.8702,
+        "n": 8375
+      },
+      "moderada": {
+        "acuracia": 0.991,
+        "n": 5334
+      },
+      "forte": {
+        "acuracia": 1.0,
+        "n": 1291
+      }
+    }
+  },
+  "questoes": {
+    "media": 14.81,
+    "mediana": 14.0,
+    "p10": 8.0,
+    "p90": 22.0,
+    "min": 8,
+    "max": 41,
+    "desvio": 5.095,
+    "por_dimensao": {
+      "ati_ref": 4.003,
+      "sen_int": 3.059,
+      "vis_ver": 3.078,
+      "seq_glo": 4.669
+    }
+  }
+}

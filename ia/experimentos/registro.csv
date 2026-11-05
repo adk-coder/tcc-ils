@@ -8,3 +8,4 @@ data,nome,diretorio,seed,duracao_s,resumo
 2026-10-27T07:52:47,rl,2026-10-27_075247_rl,20261019,3745.3,"{""lambda"": 0.01, ""acc_min_teste"": 0.9892, ""questoes_teste"": 42.848}"
 2026-10-27T10:31:45,rl,2026-10-27_103145_rl,20261019,8099.0,"{""lambda"": 0.025, ""limiar_gulosa"": 0.86, ""gulosa_acc_min_teste"": 0.8995, ""gulosa_questoes_teste"": 14.371, ""acc_min_teste"": 0.9371, ""questoes_teste"": 35.123}"
 2026-10-29T12:59:24,rl,2026-10-29_125924_rl,20261019,5566.5,"{""lambda"": 0.025, ""limiar_gulosa"": 0.86, ""gulosa_acc_min_teste"": 0.8995, ""gulosa_questoes_teste"": 14.371, ""acc_min_teste"": 0.9371, ""questoes_teste"": 35.123}"
+2026-11-05T08:29:50,analise_tac,2026-11-05_082950_analise_tac,,1.4,"{""n_alunos"": 15000, ""acc_perfil"": 0.7073, ""media_questoes"": 14.81, ""mediana_questoes"": 14.0, ""acc_min_dim"": 0.9013}"
