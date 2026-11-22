@@ -16,6 +16,7 @@ useHead({ title: 'Privacidade — MatIF' })
     <p>Para você entrar na plataforma, participar das salas do seu professor, corrigir seus exercícios e mostrar seu progresso. Seus dados não são vendidos nem compartilhados.</p>
     <h2 class="text-lg">Quem vê o quê</h2>
     <p>Seu professor vê seu nome e seu desempenho nas salas dele. Seus colegas veem apenas seu primeiro nome e a inicial do sobrenome no ranking da sala.</p>
+    <p>O professor <strong>não vê</strong> o seu resultado individual no questionário "Meu estilo". Ele vê somente o perfil agregado e anônimo da turma — os percentuais de cada polo por dimensão — e apenas quando pelo menos 5 alunos da sala concluíram o questionário.</p>
     <h2 class="text-lg">Seus direitos</h2>
     <p>Na página Conta você pode baixar todos os seus dados e excluir sua conta a qualquer momento. A exclusão apaga também suas respostas.</p>
     <NuxtLink to="/cadastro" class="mt-2 text-sm">Voltar para o cadastro</NuxtLink>

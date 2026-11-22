@@ -260,6 +260,21 @@ class Continuar(BaseModel):
     total: int
 
 
+# ---------------------------------------------------------------- perfil da turma (professor)
+class DimensaoAgregada(BaseModel):
+    dimensao: str           # "ati_ref" | "sen_int" | "vis_ver" | "seq_glo"
+    polo_a: str             # ex.: "ativo"
+    polo_b: str             # ex.: "reflexivo"
+    percentual_a: float     # 0 a 100 (arredondado para 1 casa)
+    percentual_b: float     # complemento de percentual_a
+
+
+class PerfilTurma(BaseModel):
+    respondentes: int
+    minimo_atingido: bool
+    dimensoes: list[DimensaoAgregada] | None = None
+
+
 # ---------------------------------------------------------------- adesivos de conquista
 class Adesivo(BaseModel):
     id: str

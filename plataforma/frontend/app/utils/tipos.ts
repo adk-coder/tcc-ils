@@ -156,6 +156,21 @@ export interface Continuar {
   total: number
 }
 
+// ------------------------------------------------------------ perfil da turma (professor)
+export interface DimensaoAgregada {
+  dimensao: Dimensao
+  polo_a: string      // ex.: "ativo"
+  polo_b: string      // ex.: "reflexivo"
+  percentual_a: number  // 0 a 100
+  percentual_b: number  // complemento de percentual_a
+}
+
+export interface PerfilTurma {
+  respondentes: number
+  minimo_atingido: boolean
+  dimensoes: DimensaoAgregada[] | null
+}
+
 // ------------------------------------------------------------ adesivos de conquista
 export interface Adesivo {
   id: string

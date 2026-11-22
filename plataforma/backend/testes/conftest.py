@@ -10,13 +10,18 @@ from app.db import get_session
 from app.main import app
 
 
-@pytest.fixture
-def cliente(monkeypatch):
-    # Menos iterações só nos testes (600 mil deixaria cada cadastro lento)
+def _montar_engine(monkeypatch):
     monkeypatch.setattr(seguranca, "ITERACOES", 1_000)
     engine = create_engine("sqlite://", connect_args={"check_same_thread": False}, poolclass=StaticPool)
     from app import modelos  # noqa: F401
     SQLModel.metadata.create_all(engine)
+    return engine
+
+
+@pytest.fixture
+def cliente(monkeypatch):
+    # Menos iterações só nos testes (600 mil deixaria cada cadastro lento)
+    engine = _montar_engine(monkeypatch)
 
     def sessao_teste():
         with Session(engine) as s:
@@ -25,6 +30,22 @@ def cliente(monkeypatch):
     app.dependency_overrides[get_session] = sessao_teste
     with TestClient(app) as c:
         yield c
+    app.dependency_overrides.clear()
+
+
+@pytest.fixture
+def cliente_e_sessao(monkeypatch):
+    """Igual a 'cliente', mas expõe também uma Session para inserir dados diretamente no banco."""
+    engine = _montar_engine(monkeypatch)
+
+    def sessao_teste():
+        with Session(engine) as s:
+            yield s
+
+    app.dependency_overrides[get_session] = sessao_teste
+    with TestClient(app) as c:
+        with Session(engine) as s:
+            yield c, s
     app.dependency_overrides.clear()
 
 

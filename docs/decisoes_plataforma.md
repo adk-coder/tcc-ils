@@ -212,3 +212,24 @@ TCC). Desenvolvimento e testes em SQLite; produção em PostgreSQL pela variáve
 - A API fica nos EUA (o Render não tem região no Brasil) e o banco em São Paulo:
   os dados ficam armazenados no Brasil, mas trafegam pela API nos EUA. Ponto a
   citar na discussão de LGPD (transferência internacional, art. 33).
+
+
+## P15 — Perfil agregado da turma para o professor
+- Painel "Perfil da turma" na página de cada sala (só o professor dono da sala):
+  mostra, para cada uma das quatro dimensões do ILS (ativo/reflexivo, sensorial/
+  intuitivo, visual/verbal, sequencial/global), o percentual de alunos em cada
+  polo e uma orientação pedagógica fixa sobre como variar as estratégias de ensino
+  naquela dimensão.
+- Por quê: o professor não vê o resultado individual de nenhum aluno (decisão P10),
+  mas pode beneficiar-se de um panorama da turma para planejar as aulas. O mínimo
+  de 5 respondentes garante que nenhum polo único revelaria quem escolheu o quê. O
+  rodapé do card reforça que o dado serve para variar estratégias, não para
+  separar os alunos por estilo.
+- Privacidade: o endpoint `GET /salas/{id}/perfil-turma` retorna apenas
+  `respondentes`, `minimo_atingido` e `dimensoes` (percentuais); nunca IDs, nomes
+  ou resultados individuais. Aluno ou professor de outra sala recebe 403. Somado à
+  página de privacidade, que explica claramente que o professor vê apenas o perfil
+  agregado a partir de 5 respondentes.
+- Contagem: só alunos matriculados na sala que concluíram o questionário ("Meu
+  estilo") entram na conta; questionários iniciados mas não concluídos são
+  ignorados.

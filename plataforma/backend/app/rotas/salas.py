@@ -13,11 +13,21 @@ from sqlmodel import Session, select
 
 from ..db import get_session
 from ..deps import exigir_aluno, exigir_professor, usuario_atual
-from ..esquemas import AlunoNaSala, EntrarSalaEntrada, SalaDetalhe, SalaEntrada, SalaSaida
-from ..modelos import Matricula, Perfil, Sala, Usuario
+from ..esquemas import AlunoNaSala, DimensaoAgregada, EntrarSalaEntrada, PerfilTurma, SalaDetalhe, SalaEntrada, SalaSaida
+from ..modelos import Matricula, Perfil, QuestionarioEstilo, Sala, Usuario
 from ..seguranca import gerar_codigo_sala
 
 router = APIRouter(prefix="/salas", tags=["salas"])
+
+# Pares de polos por dimensão (fato do instrumento ILS, independente do modelo de IA).
+_POLOS: dict[str, tuple[str, str]] = {
+    "ati_ref": ("ativo", "reflexivo"),
+    "sen_int": ("sensorial", "intuitivo"),
+    "vis_ver": ("visual", "verbal"),
+    "seq_glo": ("sequencial", "global"),
+}
+_ORDEM_DIMENSOES = ("ati_ref", "sen_int", "vis_ver", "seq_glo")
+_MINIMO_PERFIL = 5
 
 
 def _n_alunos(sessao: Session, sala_id: int) -> int:
@@ -107,3 +117,45 @@ def sair_da_sala(sala_id: int, aluno: Usuario = Depends(exigir_aluno), sessao: S
         raise HTTPException(status.HTTP_404_NOT_FOUND, "sala não encontrada")
     sessao.delete(matricula)
     sessao.commit()
+
+
+@router.get("/{sala_id}/perfil-turma", response_model=PerfilTurma)
+def perfil_turma(sala_id: int, prof: Usuario = Depends(exigir_professor),
+                 sessao: Session = Depends(get_session)):
+    """Perfil agregado e anônimo dos estilos de aprendizagem da turma (só para o professor dono da sala)."""
+    sala = sessao.get(Sala, sala_id)
+    if sala is None or sala.professor_id != prof.id:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "acesso negado")
+
+    questionarios = sessao.exec(
+        select(QuestionarioEstilo)
+        .join(Matricula, Matricula.aluno_id == QuestionarioEstilo.aluno_id)
+        .where(Matricula.sala_id == sala_id)
+        .where(QuestionarioEstilo.concluido_em.isnot(None))
+    ).all()
+
+    respondentes = len(questionarios)
+    if respondentes < _MINIMO_PERFIL:
+        return PerfilTurma(respondentes=respondentes, minimo_atingido=False)
+
+    contagem: dict[str, dict[str, int]] = {d: {a: 0, b: 0} for d, (a, b) in _POLOS.items()}
+    for q in questionarios:
+        for r in (q.resultado or []):
+            dim = r["dimensao"]
+            polo = r["polo"]
+            if dim in contagem and polo in contagem[dim]:
+                contagem[dim][polo] += 1
+
+    dimensoes = []
+    for dim in _ORDEM_DIMENSOES:
+        a, b = _POLOS[dim]
+        total = contagem[dim][a] + contagem[dim][b]
+        if total == 0:
+            continue
+        pct_a = round(contagem[dim][a] / total * 100, 1)
+        dimensoes.append(DimensaoAgregada(
+            dimensao=dim, polo_a=a, polo_b=b,
+            percentual_a=pct_a, percentual_b=round(100.0 - pct_a, 1),
+        ))
+
+    return PerfilTurma(respondentes=respondentes, minimo_atingido=True, dimensoes=dimensoes)
