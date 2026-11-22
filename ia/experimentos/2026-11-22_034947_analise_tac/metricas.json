@@ -1,0 +1,275 @@
+{
+  "duracao_segundos": 3.3,
+  "n_alunos_teste": 15000,
+  "acuracia_por_dimensao": {
+    "ati_ref": {
+      "acuracia": 0.9013,
+      "ic95_low": 0.8964,
+      "ic95_high": 0.9059,
+      "n_acertos": 13519,
+      "n_total": 15000
+    },
+    "sen_int": {
+      "acuracia": 0.9216,
+      "ic95_low": 0.9172,
+      "ic95_high": 0.9258,
+      "n_acertos": 13824,
+      "n_total": 15000
+    },
+    "vis_ver": {
+      "acuracia": 0.9209,
+      "ic95_low": 0.9165,
+      "ic95_high": 0.9251,
+      "n_acertos": 13814,
+      "n_total": 15000
+    },
+    "seq_glo": {
+      "acuracia": 0.9243,
+      "ic95_low": 0.92,
+      "ic95_high": 0.9285,
+      "n_acertos": 13865,
+      "n_total": 15000
+    }
+  },
+  "acuracia_por_polo_tac": {
+    "ati_ref": {
+      "ativo": {
+        "n": 7589,
+        "percentual": 50.6,
+        "acuracia": 0.8992,
+        "ic95_low": 0.8922,
+        "ic95_high": 0.9058
+      },
+      "reflexivo": {
+        "n": 7411,
+        "percentual": 49.4,
+        "acuracia": 0.9034,
+        "ic95_low": 0.8965,
+        "ic95_high": 0.9099
+      },
+      "acuracia_balanceada": 0.9013
+    },
+    "sen_int": {
+      "sensorial": {
+        "n": 7469,
+        "percentual": 49.8,
+        "acuracia": 0.9205,
+        "ic95_low": 0.9141,
+        "ic95_high": 0.9264
+      },
+      "intuitivo": {
+        "n": 7531,
+        "percentual": 50.2,
+        "acuracia": 0.9227,
+        "ic95_low": 0.9165,
+        "ic95_high": 0.9285
+      },
+      "acuracia_balanceada": 0.9216
+    },
+    "vis_ver": {
+      "visual": {
+        "n": 7413,
+        "percentual": 49.4,
+        "acuracia": 0.9224,
+        "ic95_low": 0.9161,
+        "ic95_high": 0.9283
+      },
+      "verbal": {
+        "n": 7587,
+        "percentual": 50.6,
+        "acuracia": 0.9195,
+        "ic95_low": 0.9131,
+        "ic95_high": 0.9254
+      },
+      "acuracia_balanceada": 0.9209
+    },
+    "seq_glo": {
+      "sequencial": {
+        "n": 7457,
+        "percentual": 49.7,
+        "acuracia": 0.9466,
+        "ic95_low": 0.9413,
+        "ic95_high": 0.9515
+      },
+      "global": {
+        "n": 7543,
+        "percentual": 50.3,
+        "acuracia": 0.9023,
+        "ic95_low": 0.8954,
+        "ic95_high": 0.9088
+      },
+      "acuracia_balanceada": 0.9244
+    }
+  },
+  "acuracia_por_polo_arvore": {
+    "ati_ref": {
+      "ativo": {
+        "n": 7589,
+        "percentual": 50.6,
+        "acuracia": 0.9221,
+        "ic95_low": 0.9159,
+        "ic95_high": 0.9279
+      },
+      "reflexivo": {
+        "n": 7411,
+        "percentual": 49.4,
+        "acuracia": 0.9336,
+        "ic95_low": 0.9277,
+        "ic95_high": 0.9391
+      },
+      "acuracia_balanceada": 0.9279
+    },
+    "sen_int": {
+      "sensorial": {
+        "n": 7469,
+        "percentual": 49.8,
+        "acuracia": 0.8946,
+        "ic95_low": 0.8875,
+        "ic95_high": 0.9014
+      },
+      "intuitivo": {
+        "n": 7531,
+        "percentual": 50.2,
+        "acuracia": 0.9012,
+        "ic95_low": 0.8943,
+        "ic95_high": 0.9077
+      },
+      "acuracia_balanceada": 0.8979
+    },
+    "vis_ver": {
+      "visual": {
+        "n": 7413,
+        "percentual": 49.4,
+        "acuracia": 0.9201,
+        "ic95_low": 0.9137,
+        "ic95_high": 0.9261
+      },
+      "verbal": {
+        "n": 7587,
+        "percentual": 50.6,
+        "acuracia": 0.9105,
+        "ic95_low": 0.9039,
+        "ic95_high": 0.9167
+      },
+      "acuracia_balanceada": 0.9153
+    },
+    "seq_glo": {
+      "sequencial": {
+        "n": 7457,
+        "percentual": 49.7,
+        "acuracia": 0.9217,
+        "ic95_low": 0.9154,
+        "ic95_high": 0.9276
+      },
+      "global": {
+        "n": 7543,
+        "percentual": 50.3,
+        "acuracia": 0.9218,
+        "ic95_low": 0.9155,
+        "ic95_high": 0.9276
+      },
+      "acuracia_balanceada": 0.9217
+    }
+  },
+  "acuracia_perfil_completo": {
+    "acuracia": 0.7073,
+    "ic95_low": 0.7,
+    "ic95_high": 0.7146,
+    "n_acertos": 10610
+  },
+  "distribuicao_erros": {
+    "0": {
+      "alunos": 10610,
+      "percentual": 70.73
+    },
+    "1": {
+      "alunos": 3836,
+      "percentual": 25.57
+    },
+    "2": {
+      "alunos": 520,
+      "percentual": 3.47
+    },
+    "3": {
+      "alunos": 34,
+      "percentual": 0.23
+    },
+    "4": {
+      "alunos": 0,
+      "percentual": 0.0
+    }
+  },
+  "acuracia_por_intensidade": {
+    "ati_ref": {
+      "leve": {
+        "acuracia": 0.8276,
+        "n": 8004
+      },
+      "moderada": {
+        "acuracia": 0.9815,
+        "n": 5445
+      },
+      "forte": {
+        "acuracia": 1.0,
+        "n": 1551
+      }
+    },
+    "sen_int": {
+      "leve": {
+        "acuracia": 0.8148,
+        "n": 5945
+      },
+      "moderada": {
+        "acuracia": 0.9872,
+        "n": 5876
+      },
+      "forte": {
+        "acuracia": 1.0,
+        "n": 3179
+      }
+    },
+    "vis_ver": {
+      "leve": {
+        "acuracia": 0.8266,
+        "n": 6356
+      },
+      "moderada": {
+        "acuracia": 0.9856,
+        "n": 5831
+      },
+      "forte": {
+        "acuracia": 1.0,
+        "n": 2813
+      }
+    },
+    "seq_glo": {
+      "leve": {
+        "acuracia": 0.8702,
+        "n": 8375
+      },
+      "moderada": {
+        "acuracia": 0.991,
+        "n": 5334
+      },
+      "forte": {
+        "acuracia": 1.0,
+        "n": 1291
+      }
+    }
+  },
+  "questoes": {
+    "media": 14.81,
+    "mediana": 14.0,
+    "p10": 8.0,
+    "p90": 22.0,
+    "min": 8,
+    "max": 41,
+    "desvio": 5.095,
+    "por_dimensao": {
+      "ati_ref": 4.003,
+      "sen_int": 3.059,
+      "vis_ver": 3.078,
+      "seq_glo": 4.669
+    }
+  }
+}

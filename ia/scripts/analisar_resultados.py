@@ -4,6 +4,8 @@ Uso (de dentro da pasta ia/):
     python scripts/analisar_resultados.py [--experimento experimentos/2026-10-25_092249_tac]
                                           [--dados dados/sintetico]
                                           [--alvo escore]
+                                          [--experimento-arvore experimentos/2026-10-25_085918_arvore]
+                                          [--experimento-rl experimentos/2026-10-29_125924_rl]
 
 O que faz:
   1. Lê o modelo TAC e os limiares escolhidos na validação do experimento indicado.
@@ -13,9 +15,11 @@ O que faz:
      - acurácia do PERFIL COMPLETO (4 dimensões certas de uma vez);
      - distribuição de erros por aluno (0 a 4 dimensões erradas);
      - distribuição completa do nº de questões (mediana, p10, p90, mín, máx).
-  4. Gera questoes_por_aluno.png e acerto_por_intensidade.png.
-  5. Salva analise.json e cria entrada no registro de experimentos.
-  6. Para se qualquer número divergir dos valores já registrados no dossiê.
+  4. Calcula a acurácia por polo (balanceada) para o TAC e para a árvore de decisão.
+  5. Gera questoes_por_aluno.png, acerto_por_intensidade.png e versões TCC das
+     três curvas (sem título interno, vírgula decimal nos eixos).
+  6. Salva analise.json, acuracia_por_polo.csv e cria entrada no registro de experimentos.
+  7. Para se qualquer número divergir dos valores já registrados no dossiê.
 
 NÃO altera o modelo nem os limiares escolhidos na validação (D14/D19).
 """
@@ -31,7 +35,10 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
 import numpy as np
+import pandas as pd
+import yaml
 
+from ils_adaptativo.arvore import QuestionarioArvore  # noqa: F401 — necessário para joblib.load
 from ils_adaptativo.constantes import DIMENSOES, POLOS
 from ils_adaptativo.dados import carregar_conjunto, gabarito, respostas
 from ils_adaptativo.escore import NOMES_INTENSIDADE
@@ -48,6 +55,216 @@ def wilson_ic95(acertos: int, n: int) -> tuple[float, float]:
     return round(float(centro - margem), 4), round(float(centro + margem), 4)
 
 
+def acuracia_por_polo(
+    polo_real: np.ndarray,
+    polo_prev: np.ndarray,
+    polo_a: str,
+    polo_b: str,
+) -> dict:
+    """n, %, acurácia dentro do polo e Wilson IC95% para cada polo + acurácia balanceada.
+
+    Convenção: polo_val=1 → polo_a ("resposta a"), polo_val=0 → polo_b ("resposta b").
+    """
+    n = len(polo_real)
+    resultado: dict = {}
+    accs: list[float] = []
+    for polo_val, polo_nome in ((1, polo_a), (0, polo_b)):
+        mask = polo_real == polo_val
+        n_polo = int(mask.sum())
+        pct = round(100.0 * n_polo / n, 1)
+        if n_polo == 0:
+            resultado[polo_nome] = {
+                "n": 0, "percentual": 0.0,
+                "acuracia": None, "ic95_low": None, "ic95_high": None,
+            }
+            continue
+        acertos = int((polo_prev[mask] == polo_val).sum())
+        acc = round(acertos / n_polo, 4)
+        ic_low, ic_high = wilson_ic95(acertos, n_polo)
+        resultado[polo_nome] = {
+            "n": n_polo, "percentual": pct, "acuracia": acc,
+            "ic95_low": ic_low, "ic95_high": ic_high,
+        }
+        accs.append(acc)
+    resultado["acuracia_balanceada"] = round(sum(accs) / len(accs), 4) if len(accs) == 2 else None
+    return resultado
+
+
+def _imprimir_polo_tabela(nome_modelo: str, polo_stats: dict) -> None:
+    print(f"\n{'=' * 72}")
+    print(f"ACURÁCIA POR POLO — {nome_modelo}")
+    print(f"{'=' * 72}")
+    print(f"  {'Dimensão':<10}  {'Polo':<12}  {'n':>7}  {'%':>5}  "
+          f"{'Acurácia':>10}  {'IC 95% Wilson':>24}  {'Bal.':>8}")
+    print(f"  {'-' * 72}")
+    for nome in DIMENSOES:
+        stats = polo_stats[nome]
+        polo_a_nome, polo_b_nome = POLOS[nome]
+        bal = stats.get("acuracia_balanceada")
+        for i, polo_nome in enumerate((polo_a_nome, polo_b_nome)):
+            v = stats[polo_nome]
+            if v["acuracia"] is None:
+                ic_str, acc_str = "—", "—"
+            else:
+                ic_str = f"[{v['ic95_low']:.4f}, {v['ic95_high']:.4f}]"
+                acc_str = f"{v['acuracia']:.4f}"
+            bal_str = f"{bal:.4f}" if (i == 0 and bal is not None) else ""
+            dim_str = nome if i == 0 else ""
+            print(f"  {dim_str:<10}  {polo_nome:<12}  {v['n']:>7}  {v['percentual']:>4.1f}%  "
+                  f"{acc_str:>10}  {ic_str:>24}  {bal_str:>8}")
+
+
+# ---------------------------------------------------------------------------
+# Estilos visuais das variantes (replicados dos scripts de treino para as figuras TCC)
+_ESTILO_ARVORE = {
+    "dimensao": {"cor": "#2a78d6", "marcador": "o", "linha": "-",  "rotulo": "só itens da dimensão"},
+    "todos":    {"cor": "#eb6834", "marcador": "s", "linha": "--", "rotulo": "qualquer um dos 44 itens"},
+}
+_ESTILO_TAC = {
+    "escore": {"cor": "#2a78d6", "marcador": "o", "linha": "-",  "rotulo": "TAC, alvo = polo do ILS"},
+    "theta":  {"cor": "#eb6834", "marcador": "s", "linha": "--", "rotulo": "TAC, alvo = θ > 0"},
+}
+
+
+def figura_arvore_tcc(exp_arvore: Path, caminho) -> None:
+    """Versão da curva da árvore para o TCC: sem título de figura, vírgula decimal no eixo y."""
+    curva = pd.read_csv(exp_arvore / "curva_validacao.csv")
+    metricas_a = json.loads((exp_arvore / "metricas.json").read_text(encoding="utf-8"))
+    meta = metricas_a["meta_acuracia"]
+    por_dim = metricas_a["parada_garantida"]["validacao"]["por_dimensao"]
+    q_ref = {d: por_dim[d]["media_questoes"] for d in DIMENSOES}
+
+    br = FuncFormatter(lambda x, _: f"{x:.1f}".replace(".", ","))
+    fig, eixos = plt.subplots(2, 2, figsize=(10, 7.5), sharey=True)
+    for eixo, nome in zip(eixos.flat, DIMENSOES):
+        for variante, est in _ESTILO_ARVORE.items():
+            c = curva[(curva["variante"] == variante) & (curva["dimensao"] == nome)]
+            if c.empty:
+                continue
+            eixo.plot(
+                c["media_questoes"], c["acuracia_polo"],
+                color=est["cor"], marker=est["marcador"],
+                markersize=7 if variante == "todos" else 4, linewidth=2, linestyle=est["linha"],
+                markerfacecolor="none" if variante == "todos" else est["cor"],
+                label=est["rotulo"],
+            )
+        eixo.plot([q_ref[nome]], [1.0], marker="X", markersize=9, color="#1f1f1d", linestyle="none",
+                  label="parada garantida (sem IA)")
+        eixo.annotate(f"sem IA: {q_ref[nome]:.1f}".replace(".", ","),
+                      (q_ref[nome], 1.0), textcoords="offset points",
+                      xytext=(-62, -14), fontsize=8, color="#1f1f1d")
+        eixo.axhline(meta, color="#6b6b66", linewidth=1, linestyle="--")
+        eixo.text(0.3, meta + 0.004, f"meta {meta:.0%}", color="#3d3d3a", fontsize=8)
+        eixo.set_title(f"{POLOS[nome][0]} / {POLOS[nome][1]}", fontsize=11)
+        eixo.set_xlim(0, 11.5)
+        eixo.set_ylim(0.5, 1.01)
+        eixo.grid(color="#e5e4df", linewidth=0.8)
+        eixo.spines[["top", "right"]].set_visible(False)
+    for eixo in eixos[1]:
+        eixo.set_xlabel("nº médio de questões feitas para a dimensão (validação)")
+    for eixo in eixos[:, 0]:
+        eixo.set_ylabel("acurácia do polo")
+        eixo.yaxis.set_major_formatter(br)
+    eixos[0, 0].legend(loc="lower right", fontsize=9, frameon=False)
+    fig.tight_layout()
+    fig.savefig(caminho, dpi=200)
+    plt.close(fig)
+
+
+def figura_tac_tcc(exp_tac: Path, exp_arvore: Path | None, caminho) -> None:
+    """Versão da curva TAC para o TCC: sem título de figura, vírgula decimal no eixo y."""
+    curva = pd.read_csv(exp_tac / "curva_validacao.csv")
+    metricas_t = json.loads((exp_tac / "metricas.json").read_text(encoding="utf-8"))
+    meta = metricas_t["meta_acuracia"]
+    por_dim = metricas_t["parada_garantida"]["validacao"]["por_dimensao"]
+    q_ref = {d: por_dim[d]["media_questoes"] for d in DIMENSOES}
+
+    arvore_curva = None
+    if exp_arvore is not None and (exp_arvore / "curva_validacao.csv").exists():
+        c = pd.read_csv(exp_arvore / "curva_validacao.csv")
+        arvore_curva = c[c["variante"] == "dimensao"]
+
+    br = FuncFormatter(lambda x, _: f"{x:.1f}".replace(".", ","))
+    fig, eixos = plt.subplots(2, 2, figsize=(10, 7.5), sharey=True)
+    for eixo, nome in zip(eixos.flat, DIMENSOES):
+        if arvore_curva is not None:
+            c = arvore_curva[arvore_curva["dimensao"] == nome]
+            eixo.plot(c["media_questoes"], c["acuracia_polo"], color="#8c8c86", marker="^", markersize=4,
+                      linewidth=1.2, label="árvore de decisão")
+        for alvo, est in _ESTILO_TAC.items():
+            c = curva[(curva["alvo"] == alvo) & (curva["dimensao"] == nome)].sort_values("media_questoes")
+            if c.empty:
+                continue
+            eixo.plot(c["media_questoes"], c["acuracia_polo"], color=est["cor"], marker=est["marcador"],
+                      markersize=4, linewidth=2, linestyle=est["linha"], label=est["rotulo"])
+        eixo.plot([q_ref[nome]], [1.0], marker="X", markersize=9, color="#1f1f1d", linestyle="none",
+                  label="parada garantida (sem IA)")
+        eixo.axhline(meta, color="#6b6b66", linewidth=1, linestyle="--")
+        eixo.text(0.3, meta + 0.004, f"meta {meta:.0%}", color="#3d3d3a", fontsize=8)
+        eixo.set_title(f"{POLOS[nome][0]} / {POLOS[nome][1]}", fontsize=11)
+        eixo.set_xlim(0, 11.5)
+        eixo.set_ylim(0.5, 1.01)
+        eixo.grid(color="#e5e4df", linewidth=0.8)
+        eixo.spines[["top", "right"]].set_visible(False)
+    for eixo in eixos[1]:
+        eixo.set_xlabel("nº médio de questões feitas para a dimensão (validação)")
+    for eixo in eixos[:, 0]:
+        eixo.set_ylabel("acurácia do polo")
+        eixo.yaxis.set_major_formatter(br)
+    eixos[0, 0].legend(loc="lower right", fontsize=8, frameon=False)
+    fig.tight_layout()
+    fig.savefig(caminho, dpi=200)
+    plt.close(fig)
+
+
+def figura_rl_tcc(exp_rl: Path, exp_tac: Path | None, caminho) -> None:
+    """Versão da curva RL para o TCC: sem título de figura, vírgula decimal no eixo y."""
+    res = pd.read_csv(exp_rl / "resultados_validacao.csv")
+    gul_path = exp_rl / "gulosa_validacao.csv"
+    gul = pd.read_csv(gul_path) if gul_path.exists() else None
+    with open(exp_rl / "config.yaml", encoding="utf-8") as f:
+        cfg_rl = yaml.safe_load(f)
+    meta = cfg_rl.get("meta_acuracia", 0.9)
+
+    tac_agg = None
+    if exp_tac is not None and (exp_tac / "curva_validacao.csv").exists():
+        c = pd.read_csv(exp_tac / "curva_validacao.csv")
+        c = c[c["alvo"] == "escore"]
+        tac_agg = c.groupby("limiar").agg(
+            acc_min=("acuracia_polo", "min"),
+            acc_media=("acuracia_polo", "mean"),
+            questoes=("media_questoes", "sum"),
+        ).reset_index()
+
+    br = FuncFormatter(lambda x, _: f"{x:.2f}".replace(".", ","))
+    fig, eixo = plt.subplots(figsize=(7.5, 5))
+    if tac_agg is not None:
+        eixo.plot(tac_agg["questoes"], tac_agg["acc_min"], color="#8c8c86", marker="^", markersize=4,
+                  linewidth=1.5, label="TAC (cada ponto = um limiar)")
+    if gul is not None:
+        eixo.plot(gul["questoes"], gul["acc_min"], color="#eb6834", marker="s", markersize=4, linewidth=1.5,
+                  linestyle="--", label="gulosa + classificador, sem RL (cada ponto = um limiar)")
+    res_sorted = res.sort_values("questoes")
+    eixo.plot(res_sorted["questoes"], res_sorted["acc_min"], color="#2a78d6", marker="o", markersize=6,
+              linewidth=2, label="RL (cada ponto = um λ)")
+    for _, r in res_sorted.iterrows():
+        eixo.annotate(f"λ={r['lambda']:g}", (r["questoes"], r["acc_min"]), textcoords="offset points",
+                      xytext=(6, -10), fontsize=8, color="#3d3d3a")
+    eixo.axhline(meta, color="#6b6b66", linewidth=1, linestyle="--")
+    eixo.text(0.5, meta + 0.003, f"meta {meta:.0%}", color="#3d3d3a", fontsize=8)
+    eixo.set_xlabel("nº médio de questões no total (validação)")
+    eixo.set_ylabel("acurácia do polo na pior dimensão")
+    eixo.set_xlim(0, 44)
+    eixo.set_ylim(0.7, 1.005)
+    eixo.grid(color="#e5e4df", linewidth=0.8)
+    eixo.spines[["top", "right"]].set_visible(False)
+    eixo.legend(loc="lower right", fontsize=9, frameon=False)
+    eixo.yaxis.set_major_formatter(br)
+    fig.tight_layout()
+    fig.savefig(caminho, dpi=200)
+    plt.close(fig)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
@@ -62,9 +279,17 @@ def main() -> None:
         "--apenas-figuras", default=None, metavar="CAMINHO",
         help="salva figuras em CAMINHO sem criar novo experimento (simulação ainda roda)",
     )
+    parser.add_argument(
+        "--experimento-arvore", default=None, metavar="CAMINHO",
+        help="experimento *_arvore para análise por polo e figura TCC (padrão: o último em experimentos/)",
+    )
+    parser.add_argument(
+        "--experimento-rl", default=None, metavar="CAMINHO",
+        help="experimento *_rl para a figura TCC do RL (padrão: o último *_rl em experimentos/)",
+    )
     args = parser.parse_args()
 
-    # --------------------------------------------------------------------- experimento
+    # --------------------------------------------------------------------- experimento TAC
     if args.experimento:
         exp_tac = Path(args.experimento)
     else:
@@ -81,6 +306,19 @@ def main() -> None:
     print(f"Alvo            : {args.alvo}")
     print(f"Limiares (val.) : {dict(zip(DIMENSOES, limiares))}\n")
 
+    # --------------------------------------------------------------------- experimentos auxiliares
+    if args.experimento_arvore:
+        exp_arvore: Path | None = Path(args.experimento_arvore)
+    else:
+        cands_a = sorted(Path("experimentos").glob("*_arvore"))
+        exp_arvore = cands_a[-1] if cands_a else None
+
+    if args.experimento_rl:
+        exp_rl: Path | None = Path(args.experimento_rl)
+    else:
+        cands_rl = sorted(Path("experimentos").glob("*_rl"))
+        exp_rl = cands_rl[-1] if cands_rl else None
+
     # --------------------------------------------------------------------- dados de teste
     teste = carregar_conjunto("teste", args.dados)
     X_te = respostas(teste)
@@ -88,7 +326,7 @@ def main() -> None:
     n = len(X_te)
     print(f"Conjunto de teste: {n} alunos\n")
 
-    # --------------------------------------------------------------------- simulação
+    # --------------------------------------------------------------------- simulação TAC
     print("Simulando o TAC no conjunto de TESTE...")
     trajs = []
     for d in range(4):
@@ -214,6 +452,31 @@ def main() -> None:
         raise SystemExit(1)
     print("  Todos os números batem com o dossiê.")
 
+    # --------------------------------------------------------------------- árvore de decisão
+    arvore_prev_polo: np.ndarray | None = None
+    if exp_arvore and (exp_arvore / "modelo_dimensao.joblib").exists():
+        arvore_modelo = joblib.load(exp_arvore / "modelo_dimensao.joblib")
+        arvore_prev_polo = arvore_modelo.prever(X_te)["polo"]   # (n, 4)
+        print(f"\nÁrvore de decisão carregada : {exp_arvore}")
+    else:
+        print("\n(Árvore não encontrada; análise por polo só para o TAC.)")
+
+    # --------------------------------------------------------------------- acurácia por polo
+    polo_stats_tac: dict = {}
+    for d, nome in enumerate(DIMENSOES):
+        polo_a_nome, polo_b_nome = POLOS[nome]
+        polo_stats_tac[nome] = acuracia_por_polo(
+            polo_real[:, d], polo_prev[:, d], polo_a_nome, polo_b_nome)
+    _imprimir_polo_tabela(f"TAC (alvo: {args.alvo})", polo_stats_tac)
+
+    polo_stats_arvore: dict = {}
+    if arvore_prev_polo is not None:
+        for d, nome in enumerate(DIMENSOES):
+            polo_a_nome, polo_b_nome = POLOS[nome]
+            polo_stats_arvore[nome] = acuracia_por_polo(
+                polo_real[:, d], arvore_prev_polo[:, d], polo_a_nome, polo_b_nome)
+        _imprimir_polo_tabela("Árvore de decisão", polo_stats_arvore)
+
     # --------------------------------------------------------------------- serrilhado no histograma
     print("\n" + "=" * 65)
     print("INVESTIGAÇÃO DO PADRÃO SERRILHADO (mod 3)")
@@ -253,6 +516,8 @@ def main() -> None:
         cfg = {
             "nome_experimento": "analise_tac",
             "experimento_tac": str(exp_tac),
+            "experimento_arvore": str(exp_arvore) if exp_arvore else None,
+            "experimento_rl": str(exp_rl) if exp_rl else None,
             "alvo": args.alvo,
             "limiares_escolhidos": limiares_dict,
             "diretorio_dados": args.dados,
@@ -311,6 +576,42 @@ def main() -> None:
     plt.close(fig)
     print(f"  acerto_por_intensidade.png  -> {fig_i}")
 
+    # --- acuracia_por_polo.csv
+    linhas_polo = []
+    for nome in DIMENSOES:
+        polo_a_nome, polo_b_nome = POLOS[nome]
+        for modelo_nome, stats_dict in (("tac", polo_stats_tac), ("arvore", polo_stats_arvore)):
+            if not stats_dict:
+                continue
+            stats = stats_dict[nome]
+            for polo_nome in (polo_a_nome, polo_b_nome):
+                v = stats[polo_nome]
+                linhas_polo.append({
+                    "modelo": modelo_nome, "dimensao": nome, "polo": polo_nome,
+                    "n": v["n"], "percentual": v["percentual"],
+                    "acuracia": v["acuracia"],
+                    "ic95_low": v["ic95_low"], "ic95_high": v["ic95_high"],
+                    "acuracia_balanceada": stats["acuracia_balanceada"],
+                })
+    csv_polo = _cam("acuracia_por_polo.csv")
+    pd.DataFrame(linhas_polo).to_csv(csv_polo, index=False)
+    print(f"  acuracia_por_polo.csv       -> {csv_polo}")
+
+    # --- figuras TCC (sem título de figura, vírgula decimal nos eixos)
+    if exp_arvore and (exp_arvore / "curva_validacao.csv").exists():
+        fig_at = _cam("curva_arvore_tcc.png")
+        figura_arvore_tcc(exp_arvore, fig_at)
+        print(f"  curva_arvore_tcc.png       -> {fig_at}")
+
+    fig_tt = _cam("curva_tac_tcc.png")
+    figura_tac_tcc(exp_tac, exp_arvore, fig_tt)
+    print(f"  curva_tac_tcc.png          -> {fig_tt}")
+
+    if exp_rl and (exp_rl / "resultados_validacao.csv").exists():
+        fig_rt = _cam("curva_rl_tcc.png")
+        figura_rl_tcc(exp_rl, exp_tac, fig_rt)
+        print(f"  curva_rl_tcc.png          -> {fig_rt}")
+
     if args.apenas_figuras:
         print("Concluído (apenas figuras).")
         return
@@ -319,6 +620,8 @@ def main() -> None:
     analise = {
         "n_alunos_teste": n,
         "acuracia_por_dimensao": dim_stats,
+        "acuracia_por_polo_tac": polo_stats_tac,
+        **( {"acuracia_por_polo_arvore": polo_stats_arvore} if polo_stats_arvore else {} ),
         "acuracia_perfil_completo": {
             "acuracia": round(acc_perfil, 4),
             "ic95_low": ic_p_low,
@@ -335,6 +638,10 @@ def main() -> None:
         "media_questoes": q_stats["media"],
         "mediana_questoes": q_stats["mediana"],
         "acc_min_dim": min(v["acuracia"] for v in dim_stats.values()),
+        "bal_acc_min_tac": min(
+            v["acuracia_balanceada"] for v in polo_stats_tac.values()
+            if v["acuracia_balanceada"] is not None
+        ),
     }
     exp.finalizar(analise, resumo=resumo)
     print(f"\nPasta do experimento: {exp.dir}")

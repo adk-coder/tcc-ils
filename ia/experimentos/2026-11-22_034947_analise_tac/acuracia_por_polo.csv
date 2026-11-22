@@ -1,0 +1,17 @@
+modelo,dimensao,polo,n,percentual,acuracia,ic95_low,ic95_high,acuracia_balanceada
+tac,ati_ref,ativo,7589,50.6,0.8992,0.8922,0.9058,0.9013
+tac,ati_ref,reflexivo,7411,49.4,0.9034,0.8965,0.9099,0.9013
+arvore,ati_ref,ativo,7589,50.6,0.9221,0.9159,0.9279,0.9279
+arvore,ati_ref,reflexivo,7411,49.4,0.9336,0.9277,0.9391,0.9279
+tac,sen_int,sensorial,7469,49.8,0.9205,0.9141,0.9264,0.9216
+tac,sen_int,intuitivo,7531,50.2,0.9227,0.9165,0.9285,0.9216
+arvore,sen_int,sensorial,7469,49.8,0.8946,0.8875,0.9014,0.8979
+arvore,sen_int,intuitivo,7531,50.2,0.9012,0.8943,0.9077,0.8979
+tac,vis_ver,visual,7413,49.4,0.9224,0.9161,0.9283,0.9209
+tac,vis_ver,verbal,7587,50.6,0.9195,0.9131,0.9254,0.9209
+arvore,vis_ver,visual,7413,49.4,0.9201,0.9137,0.9261,0.9153
+arvore,vis_ver,verbal,7587,50.6,0.9105,0.9039,0.9167,0.9153
+tac,seq_glo,sequencial,7457,49.7,0.9466,0.9413,0.9515,0.9244
+tac,seq_glo,global,7543,50.3,0.9023,0.8954,0.9088,0.9244
+arvore,seq_glo,sequencial,7457,49.7,0.9217,0.9154,0.9276,0.9217
+arvore,seq_glo,global,7543,50.3,0.9218,0.9155,0.9276,0.9217

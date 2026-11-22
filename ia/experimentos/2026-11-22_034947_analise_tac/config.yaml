@@ -1,0 +1,11 @@
+nome_experimento: analise_tac
+experimento_tac: experimentos\2026-10-25_092249_tac
+experimento_arvore: experimentos\2026-10-25_085918_arvore
+experimento_rl: experimentos\2026-10-29_125924_rl
+alvo: escore
+limiares_escolhidos:
+  ati_ref: 0.86
+  sen_int: 0.84
+  vis_ver: 0.84
+  seq_glo: 0.88
+diretorio_dados: dados/sintetico
