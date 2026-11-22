@@ -146,6 +146,23 @@ TCC). Desenvolvimento e testes em SQLite; produção em PostgreSQL pela variáve
   (perguntas e "segurança" por parte) num bloco recolhido, "Como a IA chegou
   nesse resultado?", para transparência sem confundir.
 
+### P10.3 — Dicas do resultado: equilíbrio entre os polos
+- Cada polo da tela de resultado passou a ter dois blocos de dica: "Para aproveitar
+  sua preferência" (dicas anteriores, mantidas) e "Para desenvolver o outro lado"
+  (nova dica específica para cada polo, ex.: ao aluno ativo, praticar a revisão
+  escrita após a atividade; ao reflexivo, testar resolvendo exercícios logo após
+  ler).
+- Por quê: as dicas anteriores apenas reforçavam a preferência diagnosticada. O
+  ILS mede tendências, não limites; o objetivo do sistema é ampliar o repertório
+  do aluno, não restringi-lo a um único modo de aprender. Coerente com a
+  orientação pedagógica do perfil da turma (P15) e com o rodapé de cada dimensão
+  naquele painel.
+- Ajuste de linguagem: expressões como "você aprende melhor fazendo" e "você lembra
+  melhor do que vê" foram substituídas por "você tem preferência por…" e "você tende
+  a entender bem…", para que nenhum texto sugira que o aluno só aprende (ou aprende
+  melhor) no próprio estilo. A frase-resumo do perfil passou de "Você aprende
+  melhor…" para "Sua preferência é aprender…", pelo mesmo motivo.
+
 ## P11 — PWA (instalável no celular e no computador)
 - Módulo `@vite-pwa/nuxt` (Workbox): manifesto (nome, cores do caderno, ícones)
   e service worker gerados no build. É o que torna o sistema "multiplataforma"

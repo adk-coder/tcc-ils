@@ -33,7 +33,7 @@ function polosDaDimensao(d: Dimensao): string {
               class="rounded-full bg-marca/50 px-3.5 py-1 font-display text-lg font-extrabold">{{ POLOS[p]?.nome }}</span>
       </p>
       <p class="text-xl leading-snug sm:text-2xl">
-        Você aprende melhor <strong class="font-semibold"><span class="marca-texto">{{ frase }}</span></strong>.
+        Sua preferência é aprender <strong class="font-semibold"><span class="marca-texto">{{ frase }}</span></strong>.
       </p>
     </section>
 
@@ -41,9 +41,23 @@ function polosDaDimensao(d: Dimensao): string {
     <section class="flex flex-col gap-3" aria-labelledby="titulo-dicas">
       <h2 id="titulo-dicas" class="text-xl">Como estudar no MatIF</h2>
       <ul class="folha divide-y divide-linha">
-        <li v-for="p in polos" :key="p" class="flex gap-3 px-5 py-3.5">
-          <Icone nome="certo" class="mt-0.5 shrink-0 text-acerto" />
-          <span>{{ POLOS[p]?.dica }}</span>
+        <li v-for="d in resultado" :key="d.dimensao" class="flex flex-col divide-y divide-linha px-5">
+          <!-- para aproveitar a preferência -->
+          <div class="flex gap-3 py-3.5">
+            <Icone nome="certo" class="mt-0.5 shrink-0 text-acerto" />
+            <div class="flex flex-col gap-0.5">
+              <span class="text-xs text-tinta-suave">Para aproveitar sua preferência</span>
+              <span>{{ POLOS[d.polo]?.dica }}</span>
+            </div>
+          </div>
+          <!-- para desenvolver o outro lado -->
+          <div class="flex gap-3 py-3.5">
+            <Icone nome="certo" class="mt-0.5 shrink-0 text-caneta" />
+            <div class="flex flex-col gap-0.5">
+              <span class="text-xs text-tinta-suave">Para desenvolver o lado {{ POLOS[d.polo_oposto]?.nome.toLowerCase() }}</span>
+              <span>{{ POLOS[d.polo]?.dica_outro_lado }}</span>
+            </div>
+          </div>
         </li>
       </ul>
     </section>
