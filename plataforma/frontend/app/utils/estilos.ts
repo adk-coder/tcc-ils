@@ -5,7 +5,7 @@ import type { Dimensao } from '~/utils/tipos'
 export const DIMENSOES: Record<Dimensao, { pergunta: string; polos: [string, string] }> = {
   ati_ref: { pergunta: 'Como você processa o que aprende', polos: ['ativo', 'reflexivo'] },
   sen_int: { pergunta: 'Que tipo de informação você prefere', polos: ['sensorial', 'intuitivo'] },
-  vis_ver: { pergunta: 'Como a informação entra melhor', polos: ['visual', 'verbal'] },
+  vis_ver: { pergunta: 'Como você prefere receber a informação', polos: ['visual', 'verbal'] },
   seq_glo: { pergunta: 'Como você chega a entender', polos: ['sequencial', 'global'] },
 }
 

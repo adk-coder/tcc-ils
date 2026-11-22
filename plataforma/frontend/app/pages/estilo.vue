@@ -77,7 +77,7 @@ async function responder(resposta: 'a' | 'b') {
     <template v-if="estado && !error">
       <!-- 1. apresentação -->
       <section v-if="estado.status === 'nao_iniciado'" class="folha flex flex-col gap-4 p-6 sm:p-8">
-        <h2 class="text-2xl">Como você aprende melhor?</h2>
+        <h2 class="text-2xl">Qual é o seu jeito de aprender?</h2>
         <p>
           Este questionário mostra suas preferências em quatro aspectos do jeito de aprender. Não existe resposta
           certa nem errada: escolha a opção que mais combina com você, mesmo que as duas pareçam um pouco verdadeiras.

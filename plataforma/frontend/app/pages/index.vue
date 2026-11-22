@@ -96,7 +96,7 @@ const { data: estilo } = await useAsyncData('inicio-estilo',
         </template>
         <template v-else>
           <span class="block font-display text-lg font-semibold">
-            {{ estilo.status === 'em_andamento' ? 'Continue o questionário' : 'Descubra como você aprende melhor' }}
+            {{ estilo.status === 'em_andamento' ? 'Continue o questionário' : 'Descubra seu estilo de aprendizagem' }}
           </span>
           <span class="text-sm text-tinta-suave">Poucas perguntas, sem resposta certa ou errada.</span>
         </template>
